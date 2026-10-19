@@ -1,5 +1,7 @@
 # Public, no-login release
 
+**Current update:** [Studio restoration](STUDIO.md) adds public `/papers` beside `/`, with **Papers | Public Showcase** navigation. The original uploader remains visible and reads the new anonymous `GET /api/public/capabilities`; private records and processing authorization remain protected. The audit below describes the preceding showcase-only release. Its statement that no Spring exception changed applies to that earlier release.
+
 ## Authentication investigation
 
 The original application password screen came from `WorkspaceAccess`, formerly

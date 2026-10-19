@@ -11,9 +11,18 @@ import java.util.Map;
 public class RuntimeController {
     private final ProcessingAvailability availability;
     private final boolean ephemeral;
-    public RuntimeController(ProcessingAvailability availability, @Value("${app.storage.ephemeral:false}") boolean ephemeral) {
+    private final WorkspaceAuth auth;
+    public RuntimeController(ProcessingAvailability availability, @Value("${app.storage.ephemeral:false}") boolean ephemeral, WorkspaceAuth auth) {
         this.availability = availability;
         this.ephemeral = ephemeral;
+        this.auth = auth;
+    }
+    /** Public configuration only: never exposes records, credentials or worker state. */
+    @GetMapping("/api/public/capabilities")
+    public ResponseEntity<?> publicCapabilities() {
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(Map.of(
+                "mode", availability.mode(), "processingEnabled", availability.enabled(),
+                "authenticationRequired", auth.enabled()));
     }
     /** Liveness only: no database queries, worker requests, models or bundling. */
     @GetMapping("/health")

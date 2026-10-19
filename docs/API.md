@@ -6,6 +6,8 @@ Base URL: `http://localhost:8080`. JSON everywhere. Errors use the shape `{ "err
 
 ### Deployment access
 
+`GET /api/public/capabilities` is anonymous and returns only `{ "mode":"api"|"full", "processingEnabled":false|true, "authenticationRequired":true|false }`, with `Cache-Control: no-store`. It exposes configuration, never records, credentials or worker health. Only this exact GET is public; other paths/methods retain authorization. The public Studio at `/papers` disables actions pending this check, in API mode, on errors, or when processing requires private authorization. See [Studio behavior](STUDIO.md).
+
 `GET /health` is public liveness and returns `{ "status":"ok", "service":"api" }` without querying PostgreSQL or processing services. `/actuator/health` remains readiness (including PostgreSQL). ML/render readiness is opt-in via `app.health.check-processing=true`; leave it off for Free.
 
 `GET /api/capabilities` requires workspace authentication when enabled. It returns `{ "mode":"api"|"full", "processingEnabled":false|true, "storageEphemeral":true|false, "message":"..." }`. `processingEnabled` describes configuration, not a live worker-health probe. In API-only mode, uploads, generation, regeneration and stage retries return HTTP 503 `PROCESSING_UNAVAILABLE` before controller state changes. Internal ML/render clients enforce the same guard. Claim review and existing-record management remain available. Caption approval and export keep their original gates; approving visual assets still requires successful final rendering and fails rather than falsely approving missing output.
@@ -13,7 +15,7 @@ Base URL: `http://localhost:8080`. JSON everywhere. Errors use the shape `{ "err
 `GET /api/auth/config` is public and returns `{ "enabled": true }` when workspace access is configured.
 `POST /api/auth/login` accepts `{ "password": "..." }` and returns `{ "token": "...", "mediaToken": "...", "expiresAt": "..." }`, or HTTP 401 for an incorrect password. Responses are not cached. Sessions expire after eight hours.
 
-When enabled, all other endpoints except `/actuator/health` require `Authorization: Bearer <token>`. Browser images, videos and downloads under `/files/**` may instead use `?access_token=<mediaToken>`. Media tokens cannot authorize API calls. Treat both tokens as secrets. The frontend stores them in the current tab's session storage and clears them on logout or an API 401. Changing `DEPLOYMENT_ACCESS_KEY` invalidates existing sessions.
+When enabled, all other endpoints except `/health`, `/actuator/health` and `GET /api/public/capabilities` require `Authorization: Bearer <token>`. Browser images, videos and downloads under `/files/**` may instead use `?access_token=<mediaToken>`. Media tokens cannot authorize API calls. Treat both tokens as secrets. The frontend stores them in the current tab's session storage and clears them on logout or an API 401. Changing `DEPLOYMENT_ACCESS_KEY` invalidates existing sessions.
 
 The production profile requires a workspace password of at least 32 characters and an exact `CORS_ALLOWED_ORIGINS` allowlist. Local development remains open unless `DEPLOYMENT_ACCESS_KEY` is set. This is shared workspace access; reviewer names are audit labels and are not verified individual identities. It is intended for a private, trusted review team.
 

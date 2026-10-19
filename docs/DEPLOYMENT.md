@@ -1,5 +1,7 @@
 # Deploy to Vercel and Render
 
+For the restored public Studio and deployment disclaimer, follow [the Studio release instructions](STUDIO.md#commit-and-release). Redeploy the backend first for `GET /api/public/capabilities`, then Vercel. Existing environment variables, authentication and Free API mode remain unchanged.
+
 **For the public no-login showcase on the existing free deployment, use [the showcase release steps](SHOWCASE.md#exact-release-steps).** Public metadata/media ship with Vercel; `/workspace` remains private. No live processing or persistent Render storage is needed for these bundled samples.
 
 **Using Render Free (512 MB)? Follow [the Free deployment guide](RENDER_FREE.md).** The instructions below describe the full processing deployment on a machine with more memory. The Docker image now defaults to temporary storage and automatically selects API-only mode under a small memory limit. Free hosting cannot run the complete pipeline locally.

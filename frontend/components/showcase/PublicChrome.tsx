@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-export function PublicHeader() {
+export function PublicHeader({studio = false}: {studio?: boolean}) {
   return <header className="border-b border-blush bg-cream/95 sticky top-0 z-40 backdrop-blur">
-    <div className="max-w-7xl mx-auto px-5 md:px-10 h-20 flex items-center justify-between gap-4">
-      <Link href="/" aria-label="SteerProof showcase home" className="flex items-baseline gap-3"><span className="font-serif text-4xl text-rust">steer</span><span className="text-sm text-clay border-l border-blush pl-3">Proof</span></Link>
-      <nav aria-label="Main navigation" className="flex items-center gap-5 text-sm">
-        <Link href="/#examples" className="hover:text-rust">The examples</Link>
-        <Link href="/#how-it-works" className="hidden sm:block hover:text-rust">The paper trail</Link>
+    <div className="max-w-7xl mx-auto px-4 md:px-10 h-20 flex items-center justify-between gap-4">
+      <Link href="/" aria-label="SteerProof showcase home" className="flex items-baseline gap-2 sm:gap-3"><span className="font-serif text-3xl sm:text-4xl text-rust">steer</span><span className={`text-clay border-l border-blush pl-3 ${studio ? 'text-[9px] sm:text-[10px] max-w-[80px] sm:max-w-none leading-tight uppercase tracking-widest' : 'text-sm'}`}>{studio ? 'SteerProof Studio' : 'Proof'}</span></Link>
+      <nav aria-label="Main navigation" className="flex items-center gap-3 sm:gap-5 text-xs sm:text-sm shrink-0">
+        <Link href="/papers" className="hover:text-rust">Papers</Link>
+        <Link href="/" className="hover:text-rust">Public Showcase</Link>
       </nav>
     </div>
   </header>;
