@@ -141,7 +141,8 @@ SteerProof features an editorial, high-trust frontend built in Next.js 14 adheri
 ### 1. Gate 1: Doctor Claim Review Console (Click-to-Source)
 Doctors review claims on the left sorted by risk (`RED` $\to$ `AMBER` $\to$ `GREEN`). Clicking any claim card instantly scrolls and highlights the exact sentence on the high-resolution PDF canvas with a translucent rust bounding box.
 
-![Gate 1 Claims Review Console](docs/images/ui-claims.png)
+<img width="1440" height="951" alt="image" src="https://github.com/user-attachments/assets/51682fbc-56fb-44f6-9ba2-69a62a3b1481" />
+
 
 ### 2. Precise Geometric Bounding-Box Alignment
 Multi-passage layout verification proving exact sub-millimeter coordinate alignment on dense, multi-column scientific papers:
