@@ -143,39 +143,47 @@ SteerProof features an editorial, high-trust frontend built in Next.js 16 adheri
 ### 1. Gate 1: Doctor Claim Review Console (Click-to-Source)
 Doctors review claims on the left sorted by risk (`RED` $\to$ `AMBER` $\to$ `GREEN`). Clicking any claim card instantly scrolls and highlights the exact sentence on the high-resolution PDF canvas with a translucent rust bounding box.
 
-![Gate 1 Claims Review Console](docs/images/ui-claims.png)
+<img width="1440" height="951" alt="image" src="https://github.com/user-attachments/assets/51682fbc-56fb-44f6-9ba2-69a62a3b1481" />
+
 
 ### 2. Precise Geometric Bounding-Box Alignment
 Multi-passage layout verification proving exact sub-millimeter coordinate alignment on dense, multi-column scientific papers:
 
-![Bounding Box Check](docs/images/bbox-check.png)
+<img width="1241" height="1754" alt="image" src="https://github.com/user-attachments/assets/fc08e385-70d7-4474-94f6-50918c893efe" />
+
 
 ### 3. Gate 2: Interactive Asset Review & Evidence Drawer
 Reviewers preview generated Carousels, Statics, and Reels. Every headline, stat, and quote is outlined with a subtle border. Clicking any element slides out the clinical evidence drawer displaying the verbatim paper quotation, page number, and study context.
 
-![Gate 2 Asset Console](docs/images/ui-assets.png)
+<img width="1440" height="1433" alt="image" src="https://github.com/user-attachments/assets/68417b68-1f0d-4c64-8dde-1b7c87a1776c" />
+
 
 ### 4. Reel Video Composition & Audio Synchronisation
 Full 1080×1920 vertical video reels composed in Remotion, synchronized with Microsoft Edge-TTS neural speech (`en-IN-NeerjaNeural`), karaoke word subtitles with safe-zone margin placement, and contextual B-roll footage:
 
-![Reel Player Console](docs/images/ui-reel.png)
+<img width="1440" height="1416" alt="image" src="https://github.com/user-attachments/assets/587eb250-2f3e-4a9a-a7db-a89cd4f520a9" />
+
 
 ### 5. Multi-Scene Reel Frame Progression
 Frame grabs captured across 5 scenes ($10\%, 30\%, 50\%, 70\%, 90\%$) demonstrating brand-consistent motion backgrounds, kinetic typography, and subtitle placement:
 
-![P-0001 Reel Frame Progression](docs/images/P-0001-reel-frames.png)
+<img width="5400" height="1920" alt="image" src="https://github.com/user-attachments/assets/b3c0682d-110e-4176-b028-39f2987c70f5" />
 
-![P-0002 Reel Frame Progression](docs/images/P-0002-reel-frames.png)
+
+<img width="5400" height="1920" alt="image" src="https://github.com/user-attachments/assets/b8ca42df-781b-4abb-99b9-5b7cf6b3890d" />
+
 
 ### 6. Pipeline Stage Monitor & Dashboard
 Real-time stepper tracking progress through Parsing, Extraction, Verification, Gate 1 Review, Content Writing, Asset Rendering, Gate 2 Review, and Final Export:
 
-![Pipeline Stage Monitor](docs/images/ui-pipeline.png)
+<img width="1440" height="1167" alt="image" src="https://github.com/user-attachments/assets/a63d9973-73b1-4efe-881f-324b3374398c" />
+
 
 ### 7. Release Packaging & Verified Export
 When all human gates are satisfied, SteerProof compiles a signed release package (`.zip`) with an immutable audit log, ready-to-post assets, and structured citations:
 
-![Export Release Console](docs/images/ui-export.png)
+<img width="1440" height="1214" alt="image" src="https://github.com/user-attachments/assets/3036a61d-de77-4236-8db4-66608500b58b" />
+
 
 ---
 
