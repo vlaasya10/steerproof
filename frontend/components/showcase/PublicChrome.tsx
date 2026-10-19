@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import {ArrowUpRight, LockKeyhole} from 'lucide-react';
 
 export function PublicHeader() {
   return <header className="border-b border-blush bg-cream/95 sticky top-0 z-40 backdrop-blur">
@@ -8,7 +7,6 @@ export function PublicHeader() {
       <nav aria-label="Main navigation" className="flex items-center gap-5 text-sm">
         <Link href="/#examples" className="hover:text-rust">The examples</Link>
         <Link href="/#how-it-works" className="hidden sm:block hover:text-rust">The paper trail</Link>
-        <Link href="/workspace" className="text-clay hover:text-rust flex items-center gap-1.5"><LockKeyhole size={13}/><span className="hidden sm:inline">Private workspace</span><span className="sm:hidden">Workspace</span><ArrowUpRight size={14}/></Link>
       </nav>
     </div>
   </header>;
@@ -25,8 +23,9 @@ export function PublicFooter() {
 }
 
 export function ShowcaseMode() {
-  return <details className="border border-blush rounded-2xl bg-softPaper px-5 py-4 text-sm">
-    <summary className="cursor-pointer text-ink font-medium">Interactive showcase mode <span className="text-clay font-normal ml-2">Read-only, no login</span></summary>
-    <p className="text-clay leading-relaxed mt-3 max-w-3xl">Explore completed research-to-content projects, including source-linked claims, generated posts and reels. Live processing is unavailable in this hosted demonstration. These curated snapshots and media are served by the frontend independently of Render. The private API remains authenticated and runs in its 512 MB API-only mode.</p>
-  </details>;
+  return <aside aria-label="Interactive showcase mode" className="border border-blush rounded-2xl bg-softPaper px-5 py-4 text-sm">
+    <p className="text-ink font-medium">Interactive Showcase Mode <span className="text-clay font-normal ml-2">Read-only, no login</span></p>
+    <p className="text-clay leading-relaxed mt-2 max-w-3xl">Explore completed research-to-content examples with source-linked claims and generated media. Live processing is not available in this hosted demonstration.</p>
+    <details className="text-xs mt-3 text-clay"><summary className="cursor-pointer">Hosting details</summary><p className="leading-relaxed mt-2 max-w-3xl">These curated snapshots and media are served by the frontend independently of Render. The private API remains authenticated and runs in its 512 MB API-only mode. Full processing remains available in the local application.</p></details>
+  </aside>;
 }

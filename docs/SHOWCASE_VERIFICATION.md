@@ -1,5 +1,10 @@
 # Showcase implementation and verification
 
+The [public-access follow-up report](PUBLIC_ACCESS.md) records the latest revision:
+no public workspace/login entry, requested homepage copy, always-visible hosted-mode
+disclosure, browser checks with cookies/storage disabled and 87 backend tests.
+Historical sample-preparation results below remain applicable to the bundled media.
+
 Verified locally on 19 October 2026. No cloud deployment, purchase or plan change was performed.
 
 ## Outcome

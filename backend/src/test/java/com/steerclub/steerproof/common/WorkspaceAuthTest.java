@@ -11,12 +11,31 @@ class WorkspaceAuthTest {
     private final WorkspaceAuth auth = new WorkspaceAuth(PASSWORD, true);
 
     private int request(String path, String bearer, String media) throws Exception {
-        var request = new MockHttpServletRequest("GET", path);
+        return request("GET", path, bearer, media);
+    }
+
+    private int request(String method, String path, String bearer, String media) throws Exception {
+        var request = new MockHttpServletRequest(method, path);
         if (bearer != null) request.addHeader("Authorization", "Bearer " + bearer);
         if (media != null) request.setParameter("access_token", media);
         var response = new MockHttpServletResponse();
         new WorkspaceAuthFilter(auth, new ObjectMapper()).doFilter(request, response, (req, res) -> response.setStatus(204));
         return response.getStatus();
+    }
+
+    @Test void anonymousVisitorsCannotReadOrMutatePrivateWorkspaceData() throws Exception {
+        String[][] operations = {
+                {"GET", "/api/papers"}, {"GET", "/api/papers/P-0003"},
+                {"POST", "/api/papers"}, {"PATCH", "/api/claims/C-0003-003"},
+                {"DELETE", "/api/papers/P-0003"}, {"POST", "/api/assets/A-0003-CAR/approve"},
+                {"POST", "/api/papers/P-0003/generate"}, {"POST", "/api/papers/P-0003/export"}
+        };
+        var session = auth.login(PASSWORD);
+        for (String[] operation : operations) {
+            assertEquals(401, request(operation[0], operation[1], null, null));
+            assertEquals(401, request(operation[0], operation[1], session.mediaToken(), null));
+            assertEquals(204, request(operation[0], operation[1], session.token(), null));
+        }
     }
 
     @Test void productionRequiresASecret() {

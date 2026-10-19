@@ -8,14 +8,14 @@ export default function HomePage() {
   const featured = showcaseCases[0];
   const poster = featured?.assets.find(a => a.type === 'CAROUSEL')?.media[0];
   return <><PublicHeader/><main>
-    <section className="max-w-7xl mx-auto px-5 md:px-10 pt-12 md:pt-20 pb-14 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-      <div><p className="text-sm text-rust flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-rust"/> The evidence comes with it</p>
-        <h1 className="font-serif text-6xl sm:text-7xl xl:text-8xl leading-[0.98] tracking-tight mt-6">Explore SteerProof<br/><em className="font-normal text-rust">in action.</em></h1>
-        <p className="text-lg text-clay leading-relaxed mt-7 max-w-xl">From scientific research to evidence-linked, reviewable Instagram content. Open a project. Follow a claim. See exactly where the words came from.</p>
+    <section className="max-w-7xl mx-auto px-5 md:px-10 pt-8 md:pt-12 pb-9 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+      <div><p className="text-sm text-rust flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-rust"/> SteerProof</p>
+        <h1 className="font-serif text-4xl sm:text-5xl xl:text-6xl leading-[1.04] tracking-tight mt-4">From Research Papers to <em className="font-normal text-rust">Evidence-Linked Instagram Content</em></h1>
+        <p className="text-base text-clay leading-relaxed mt-5 max-w-xl">Explore how scientific studies are transformed into accurate, reviewable carousels, static posts, captions, and AI-voiced reels — with every claim linked back to its source.</p>
         <div className="mt-8 flex flex-wrap items-center gap-5"><a href="#examples" className="bg-rust text-cream px-6 py-3.5 rounded-full text-sm inline-flex items-center gap-5 hover:bg-maroon transition-colors">Explore the examples <ArrowRight size={17}/></a><span className="text-xs text-clay">No login. No upload. A real paper trail.</span></div>
         <div className="mt-10 flex gap-8 border-t border-blush pt-6"><div><p className="font-serif text-4xl">{showcaseCases.length}</p><p className="text-xs text-clay mt-1">research projects</p></div><div><p className="font-serif text-4xl">{total}</p><p className="text-xs text-clay mt-1">source-linked claims</p></div><div><p className="font-serif text-4xl">2</p><p className="text-xs text-clay mt-1">review stages</p></div></div>
       </div>
-      <div className="relative bg-blush/30 rounded-[2rem] p-7 sm:p-10 min-h-[420px] flex items-center justify-center">
+      <div className="relative bg-blush/30 rounded-[2rem] p-7 sm:p-10 min-h-[340px] flex items-center justify-center">
         {poster && <Link href={`/showcase/${featured.slug}`} aria-label={`Explore ${featured.title}`} className="block max-w-[260px] w-full rotate-[-5deg] shadow-xl rounded-lg overflow-hidden border border-blush"><img src={poster.url} width={1080} height={1350} alt="A generated Steer carousel from the featured research project" className="w-full h-auto" fetchPriority="high"/></Link>}
         <div className="absolute right-3 sm:right-0 top-12 bg-softPaper border border-blush rounded-xl px-4 py-3 shadow-sm max-w-[200px]"><Quote size={20} className="text-rust mb-2"/><p className="text-sm font-medium">A post you can trace.</p><p className="text-xs text-clay mt-1">Copy → claim → passage → page</p></div>
         <p className="absolute left-6 bottom-5 font-hand text-2xl text-rust rotate-[-4deg]">the source stays attached ↗</p>
@@ -23,7 +23,7 @@ export default function HomePage() {
     </section>
     <div className="max-w-7xl mx-auto px-5 md:px-10"><ShowcaseMode/></div>
     <section id="examples" className="max-w-7xl mx-auto px-5 md:px-10 py-16 scroll-mt-24">
-      <div className="flex items-end justify-between gap-5 mb-8"><div><p className="text-sm text-rust mb-2">The case studies</p><h2 className="font-serif text-4xl md:text-5xl">Different questions. The same care.</h2></div><span className="hidden sm:block text-xs text-clay">{showcaseCases.length} genuine papers · read-only snapshots</span></div>
+      <div className="flex items-end justify-between gap-5 mb-8"><div><p className="text-sm text-rust mb-2">The case studies</p><h2 className="font-serif text-3xl md:text-4xl">Explore Three Completed Research Examples</h2></div><span className="hidden sm:block text-xs text-clay">{showcaseCases.length} genuine papers · read-only snapshots</span></div>
       <div className="grid md:grid-cols-3 gap-6">{showcaseCases.map((item, index) => {
         const image = item.assets.find(a => a.type === 'STATIC')?.media[0];
         const matched = item.claims.filter(c => c.quoteScore >= 90 && c.reproducedQuoteScore >= 90).length;
@@ -37,7 +37,7 @@ export default function HomePage() {
             <p className="text-sm text-clay leading-relaxed mt-4 line-clamp-4">{item.summary}</p>
             <div className="mt-5 space-y-2 text-xs"><p className="flex items-center gap-2"><Quote size={14} className="text-rust"/>{matched}/{item.claims.length} quotations match their passages</p><p className="flex items-center gap-2 text-clay"><ShieldCheck size={14}/>{item.review.kind === 'demonstration' ? 'Demonstration review recorded' : 'Workspace approvals recorded; credentials unverified'}</p></div>
             <div className="flex flex-wrap gap-1.5 mt-5 mb-6">{item.assets.filter(a => a.type === 'CAPTION' || a.media.length).map(a => <span key={a.assetId} className="text-[11px] rounded-full border border-blush px-2 py-1 text-clay">{({CAROUSEL:'Carousel',STATIC:'Static',CAPTION:'Caption',REEL:'Reel'} as Record<string,string>)[a.type]}</span>)}</div>
-            <Link href={`/showcase/${item.slug}`} className="mt-auto pt-4 border-t border-blush flex items-center justify-between text-sm text-rust">Explore case study <ArrowUpRight size={18}/></Link>
+            <Link href={`/showcase/${item.slug}`} className="mt-auto pt-4 border-t border-blush flex items-center justify-between text-sm text-rust">Explore Example <ArrowUpRight size={18}/></Link>
           </div>
         </article>;
       })}</div>

@@ -1,5 +1,10 @@
 # Public showcase release
 
+For the latest authentication audit, removal of the public workspace entry point,
+cookie/storage-disabled browser checks and exact commit/redeployment commands,
+see [PUBLIC_ACCESS.md](PUBLIC_ACCESS.md). The private workspace remains available
+directly at `/workspace`; public navigation does not advertise a login.
+
 The public homepage is `/`. The old password appeared because `app/layout.tsx`
 wrapped **every route** in `WorkspaceAccess`. That guard checks `/api/auth/config`
 and renders the workspace password form when production authentication is enabled.
