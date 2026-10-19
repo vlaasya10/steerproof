@@ -15,3 +15,58 @@
  GET / 200 in 59ms
  GET / 200 in 53ms
  GET / 200 in 68ms
+ ✓ Compiled in 407ms (510 modules)
+ GET / 200 in 119ms
+ GET / 200 in 36ms
+ GET / 200 in 57ms
+ GET / 200 in 52ms
+ GET / 200 in 56ms
+ GET / 200 in 65ms
+ ✓ Compiled /_not-found in 295ms (499 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 534ms
+ GET / 200 in 72ms
+ GET / 200 in 55ms
+ ✓ Compiled /papers/[id] in 481ms (520 modules)
+ ✓ Compiled /_not-found in 137ms (523 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 195ms
+ GET /papers/P-0001 200 in 66ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 45ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 37ms
+ ○ Compiling /papers/[id]/claims ...
+ ✓ Compiled /papers/[id]/claims in 743ms (531 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 102ms
+ GET /papers/P-0001 200 in 179ms
+ ○ Compiling /papers/[id]/assets ...
+ ✓ Compiled /papers/[id]/assets in 1500ms (566 modules)
+ ✓ Compiled /_not-found in 324ms (569 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 560ms
+ ✓ Compiled in 2.1s (580 modules)
+ ✓ Compiled in 230ms (294 modules)
+ GET /papers/P-0001/assets 200 in 318ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1099ms (583 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1231ms
+ GET /papers/P-0001/assets 200 in 263ms
+ GET /papers/P-0001/assets 200 in 71ms
+ GET /papers/P-0001/assets 200 in 80ms
+ ○ Compiling /papers/[id]/export ...
+ ✓ Compiled /papers/[id]/export in 1075ms (586 modules)
+ GET /papers/P-0001/assets 200 in 513ms
+ GET /papers/P-0001/assets 200 in 213ms
+ GET /papers/P-0001/assets 200 in 145ms
+ GET / 200 in 365ms
+ GET / 200 in 81ms
+ ✓ Compiled in 717ms (303 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 3.5s (826 modules)
+ GET / 200 in 179ms
+ ✓ Compiled in 1230ms (828 modules)
+ ✓ Compiled in 977ms (828 modules)
+ GET / 200 in 161ms
+ GET /papers/P-9001 200 in 77ms
+ GET / 200 in 49ms
+ GET / 200 in 76ms
+ GET / 200 in 60ms
+ GET /papers/P-0003/assets 200 in 801ms
+ GET /papers/P-0003/assets 200 in 162ms
+ GET /papers/P-0003/assets 200 in 169ms

@@ -1,0 +1,20 @@
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⨯ SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at loadManifest (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\load-manifest.js:36:25)
+    at DevServer.getNextFontManifest (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\next-server.js:744:47)
+    at DevServer.findPageComponents (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\dev\next-dev-server.js:571:43)
+    at async DevServer.renderPageComponent (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\base-server.js:1894:24)
+    at async DevServer.renderToResponseImpl (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\base-server.js:1946:32)
+    at async DevServer.pipeImpl (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\base-server.js:921:25)
+    at async NextNodeServer.handleCatchallRenderRequest (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\next-server.js:272:17)
+    at async DevServer.handleRequestImpl (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\base-server.js:817:17)
+    at async C:\projects\steerproof-master\frontend\node_modules\next\dist\server\dev\next-dev-server.js:339:20
+    at async Span.traceAsyncFn (C:\projects\steerproof-master\frontend\node_modules\next\dist\trace\trace.js:154:20)
+    at async DevServer.handleRequest (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\dev\next-dev-server.js:336:24)
+    at async invokeRender (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\lib\router-server.js:173:21)
+    at async handleRequest (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\lib\router-server.js:350:24)
+    at async requestHandlerImpl (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\lib\router-server.js:374:13)
+    at async Server.requestListener (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
+  page: '/'
+}
