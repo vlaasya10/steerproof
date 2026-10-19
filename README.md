@@ -3,13 +3,15 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Java 21](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.org/projects/jdk/21/)
 [![Spring Boot 3.3.4](https://img.shields.io/badge/Spring_Boot-3.3.4-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![Python 3.12](https://img.shields.io/badge/Python-3.12-yellow.svg)](https://www.python.org/)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-yellow.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-teal.svg)](https://fastapi.tiangolo.com/)
-[![Next.js 14](https://img.shields.io/badge/Next.js-14_App_Router-black.svg)](https://nextjs.org/)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16_App_Router-black.svg)](https://nextjs.org/)
 [![Remotion 4.0](https://img.shields.io/badge/Remotion-4.0-purple.svg)](https://www.remotion.dev/)
 [![Playwright](https://img.shields.io/badge/Playwright-1.48-red.svg)](https://playwright.dev/)
 [![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
 [![100% Free Stack](https://img.shields.io/badge/Cost-$0_Free_APIs_Only-success.svg)](#-the-100-free-open-stack)
+
+For Vercel frontend and Render backend setup, follow [the deployment guide](docs/DEPLOYMENT.md). Cloud hosting and persistent storage may cost money; no cloud resources are created by this repository.
 
 > **A dual-gated, evidence-traceable clinical publishing system that turns dense metabolic health research papers into on-brand Instagram Carousels, Static Posts, AI-voiced Video Reels, and Captions for [Steer](https://steerclub.com).**
 >
@@ -136,7 +138,7 @@ Every candidate claim undergoes three deterministic and semantic checks:
 
 ## 📸 Visual Walkthrough & UI Showcase
 
-SteerProof features an editorial, high-trust frontend built in Next.js 14 adhering to Steer's calm aesthetic tokens (`cream #F5EBDF`, `ink #351D1D`, `rust #C04E2A`, `softPaper #F8F2EB`).
+SteerProof features an editorial, high-trust frontend built in Next.js 16 adhering to Steer's calm aesthetic tokens (`cream #F5EBDF`, `ink #351D1D`, `rust #C04E2A`, `softPaper #F8F2EB`).
 
 ### 1. Gate 1: Doctor Claim Review Console (Click-to-Source)
 Doctors review claims on the left sorted by risk (`RED` $\to$ `AMBER` $\to$ `GREEN`). Clicking any claim card instantly scrolls and highlights the exact sentence on the high-resolution PDF canvas with a translucent rust bounding box.
@@ -238,7 +240,7 @@ SteerProof operates as an integrated multi-service micro-architecture designed f
 ```mermaid
 flowchart LR
     subgraph Frontend["Frontend (:3000)"]
-        UI["Next.js 14 App Router\nTailwindCSS · Lucide\nReact Player"]
+        UI["Next.js 16 App Router\nTailwindCSS · Lucide\nReact Player"]
     end
 
     subgraph Backend["Core API (:8080)"]
@@ -279,7 +281,7 @@ SteerProof was engineered under a strict hackathon constraint: **$0 total runnin
 | **Reel Video Composition** | Remotion 4.0 + FFmpeg | **$0** | Free for Individuals / Hackathons |
 | **B-Roll Stock Video** | Curated Local Library + Pixabay API | **$0** | Free Pixabay API (No Card) |
 | **Background Music** | Lesfm / Pixabay Ambient (`calm-1.mp3`) | **$0** | Free Content License |
-| **Frontend Framework** | Next.js 14 + Tailwind CSS | **$0** | Open Source (MIT) |
+| **Frontend Framework** | Next.js 16 + Tailwind CSS | **$0** | Open Source (MIT) |
 | **Typography** | Instrument Serif, Inter, Caveat | **$0** | SIL Open Font License 1.1 |
 
 ---
@@ -387,7 +389,7 @@ steerproof/
 │   ├── src/server.ts         # Endpoints for /carousel, /static, /reel
 │   ├── templates/            # HTML/CSS Playwright render templates
 │   └── remotion/             # React Remotion vertical video composition
-├── frontend/                 # Next.js 14 App Router (Port 3000)
+├── frontend/                 # Next.js 16 App Router (Port 3000)
 │   ├── src/app/              # Papers list, Pipeline stepper, Gate 1 & 2 consoles
 │   └── src/components/       # PDF canvas bbox highlighter, Evidence drawer
 ├── storage/                  # Shared volume (gitignored)

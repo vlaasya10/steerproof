@@ -1,4 +1,6 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+import { readSession, clearSession } from "./session";
+
+export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080").replace(/\/$/, "");
 
 export interface ApiError {
   error: string;
@@ -47,6 +49,8 @@ export async function apiRequest<T = any>(path: string, options: RequestOptions 
   const { silent, ...init } = options;
   const url = path.startsWith("http") ? path : `${API_BASE}${path}`;
   const headers = new Headers(init.headers || {});
+  const session = readSession();
+  if (session && new URL(url).origin === new URL(API_BASE).origin) headers.set("Authorization", `Bearer ${session.token}`);
   if (!headers.has("Content-Type") && init.body && typeof init.body === "string") {
     headers.set("Content-Type", "application/json");
   }
@@ -60,6 +64,10 @@ export async function apiRequest<T = any>(path: string, options: RequestOptions 
   }
 
   if (!res.ok) {
+    if (res.status === 401 && typeof window !== "undefined") {
+      clearSession();
+      window.dispatchEvent(new Event("steerproof:signout"));
+    }
     let errJson: any = null;
     try {
       errJson = await res.json();
@@ -85,7 +93,11 @@ export async function apiRequest<T = any>(path: string, options: RequestOptions 
 
 /** Public URL for a file stored under STORAGE_DIR (paths are stored relative to it). */
 export function fileUrl(relPath: string): string {
-  return `${API_BASE}/files/${relPath.replace(/^\/+/, "")}`;
+  const path = relPath.replace(/^\/+/, "").replace(/^files\//, "");
+  const url = new URL(`${API_BASE}/files/${path}`);
+  const session = readSession();
+  if (session) url.searchParams.set("access_token", session.mediaToken);
+  return url.toString();
 }
 
 export function formatSeconds(sec: number | null | undefined): string {

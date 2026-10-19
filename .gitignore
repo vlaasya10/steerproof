@@ -1,6 +1,8 @@
 # Secrets and environment
 .env
 .env.local
+.env*
+!.env.example
 *.env
 
 # Local storage and cache
@@ -40,3 +42,9 @@ dist/
 *.swo
 .DS_Store
 Thumbs.db
+*.log
+.next-build/
+.next-production/
+*.tsbuildinfo
+.next*/
+next-env.d.ts

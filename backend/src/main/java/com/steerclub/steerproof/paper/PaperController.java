@@ -164,7 +164,7 @@ public class PaperController {
         res.put("failedStage", paper.getFailedStage());
         res.put("error", paper.getError());
         res.put("createdAt", paper.getCreatedAt());
-        res.put("stages", metricsService.stageRuns(id, paper.getStatus()));
+        res.put("stages", metricsService.stageRuns(id, paper.getStatus(), paper.getFailedStage(), paper.getError()));
         res.put("stats", metricsService.stats(id));
         return res;
     }
@@ -174,7 +174,7 @@ public class PaperController {
     public List<Map<String, Object>> getRuns(@PathVariable("id") String id) {
         PaperEntity paper = paperRepository.findById(id)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "NOT_FOUND", "Paper not found: " + id));
-        return metricsService.stageRuns(id, paper.getStatus());
+        return metricsService.stageRuns(id, paper.getStatus(), paper.getFailedStage(), paper.getError());
     }
 
     @PostMapping("/papers/{id}/retry")

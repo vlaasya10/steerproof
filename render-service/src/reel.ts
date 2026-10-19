@@ -86,6 +86,7 @@ export async function renderReel(
           composition,
           serveUrl,
           codec: 'h264',
+          concurrency: process.env.RENDER_CONCURRENCY ? Number(process.env.RENDER_CONCURRENCY) : undefined,
           outputLocation,
           inputProps,
           browserExecutable,

@@ -70,3 +70,23 @@
  GET /papers/P-0003/assets 200 in 801ms
  GET /papers/P-0003/assets 200 in 162ms
  GET /papers/P-0003/assets 200 in 169ms
+▲ Next.js 16.4.2 (webpack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.183:3000
+- Environments: .env.local
+✓ Ready in 0ms
+✓ Running next.config.mjs took 41ms
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- target was set to ES2017 (For top-level `await`. Note: Next.js only polyfills for the esmodules target.)
+  	- include was updated to add '.next/dev/types/**/*.ts'
+
+  The following mandatory changes were made to your tsconfig.json:
+
+  	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+
+
+✓ Generated AGENTS.md for AI agents. Set `agentRules: false` in next.config to disable.
+[?25h

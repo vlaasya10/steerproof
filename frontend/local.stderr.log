@@ -18,3 +18,62 @@
     at async Server.requestListener (C:\projects\steerproof-master\frontend\node_modules\next\dist\server\lib\start-server.js:141:13) {
   page: '/'
 }
+ ⨯ ./node_modules/next/dist/lib/require-instrumentation-client.js:11:1
+Module not found: Can't resolve 'private-next-instrumentation-client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next/dist/client/page-bootstrap.js
+./node_modules/next/dist/client/next-dev.js
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'C:\projects\steerproof-master\frontend\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving 'next/dist/build/webpack/plugins/define-env-plugin' in C:\projects\steerproof-master\frontend\node_modules\next\dist\build\swc for build dependencies doesn't lead to expected result 'C:\projects\steerproof-master\frontend\node_modules\next\dist\build\webpack\plugins\define-env-plugin.js', but to 'Error: Can't resolve 'next/dist/build/webpack/plugins/define-env-plugin' in 'C:\projects\steerproof-master\frontend\node_modules\next\dist\build\swc'' instead. Resolving dependencies are ignored for this path.
+<w>  at unknown 4 next/dist/build/webpack/plugins/define-env-plugin
+<w>  at file dependencies C:\projects\steerproof-master\frontend\node_modules\next\dist\build\swc\index.js
+<w>  at file C:\projects\steerproof-master\frontend\node_modules\next\dist\build\swc\index.js
+<w>  at file dependencies C:\projects\steerproof-master\frontend\node_modules\next\dist\build\swc\install-bindings.js
+<w>  at file C:\projects\steerproof-master\frontend\node_modules\next\dist\build\swc\install-bindings.js
+<w>  at file dependencies C:\projects\steerproof-master\frontend\node_modules\next\dist\build\webpack\loaders\next-app-loader\index.js
+<w>  at file C:\projects\steerproof-master\frontend\node_modules\next\dist\build\webpack\loaders\next-app-loader\index.js
+<w>  at resolve commonjs C:\projects\steerproof-master\frontend\node_modules\next\dist\build\webpack\loaders\next-app-loader\index.js
+ ⨯ ./node_modules/next/dist/lib/require-instrumentation-client.js:11:1
+Module not found: Can't resolve 'private-next-instrumentation-client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next/dist/client/page-bootstrap.js
+./node_modules/next/dist/client/next-dev.js
+ ⨯ ./node_modules/next/dist/lib/require-instrumentation-client.js:11:1
+Module not found: Can't resolve 'private-next-instrumentation-client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next/dist/client/page-bootstrap.js
+./node_modules/next/dist/client/next-dev.js
+ ⨯ ./node_modules/next/dist/lib/require-instrumentation-client.js:11:1
+Module not found: Can't resolve 'private-next-instrumentation-client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next/dist/client/page-bootstrap.js
+./node_modules/next/dist/client/next-dev.js
+ ⨯ ./node_modules/next/dist/lib/require-instrumentation-client.js:11:1
+Module not found: Can't resolve 'private-next-instrumentation-client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next/dist/client/page-bootstrap.js
+./node_modules/next/dist/client/next-dev.js
+ ⨯ ./node_modules/next/dist/lib/require-instrumentation-client.js:11:1
+Module not found: Can't resolve 'private-next-instrumentation-client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next/dist/client/page-bootstrap.js
+./node_modules/next/dist/client/next-dev.js
+ ⚠ Found a change in next.config.mjs. Restarting the server to apply the changes...

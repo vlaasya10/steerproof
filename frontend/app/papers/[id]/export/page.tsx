@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { apiRequest, API_BASE, showToast } from "@/lib/api";
+import { apiRequest, fileUrl, showToast } from "@/lib/api";
 import { useReviewer } from "@/components/ReviewerContext";
 import {
   ArrowLeft,
@@ -213,7 +213,7 @@ export default function ExportPage() {
               </div>
 
               <a
-                href={`${API_BASE}${exportResult.zipUrl}`}
+                href={fileUrl(exportResult.zipUrl)}
                 download
                 className="px-5 py-2.5 rounded-lg bg-emerald-700 text-white font-medium text-xs hover:bg-emerald-800 transition shadow flex items-center gap-2"
               >

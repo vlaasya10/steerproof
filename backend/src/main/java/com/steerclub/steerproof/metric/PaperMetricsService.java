@@ -58,6 +58,10 @@ public class PaperMetricsService {
 
     /** Latest run of each stage, in pipeline order: [{stage, status, startedAt, endedAt, seconds, model, llmCalls, cacheHits, error}]. */
     public List<Map<String, Object>> stageRuns(String paperId, PaperStatus paperStatus) {
+        return stageRuns(paperId, paperStatus, null, null);
+    }
+
+    public List<Map<String, Object>> stageRuns(String paperId, PaperStatus paperStatus, String failedStage, String paperError) {
         Map<String, PipelineRunEntity> latest = new HashMap<>();
         for (PipelineRunEntity r : pipelineRunRepository.findByPaperIdOrderByStartedAtAsc(paperId)) {
             latest.put(r.getStage().toUpperCase(Locale.ROOT), r);
@@ -71,7 +75,10 @@ public class PaperMetricsService {
             Map<String, Object> m = new LinkedHashMap<>();
             m.put("stage", stage);
             String status;
-            if (stage.equals(running)) {
+            if (paperStatus == PaperStatus.FAILED && stage.equals(failedStage)) {
+                status = "FAILED";
+                if (r != null && Boolean.TRUE.equals(r.getOk())) r = null;
+            } else if (stage.equals(running)) {
                 status = "RUNNING";
                 r = null; // the in-flight run is only persisted when it ends
             } else if (afterRunning || r == null) {
@@ -88,7 +95,7 @@ public class PaperMetricsService {
             m.put("model", r != null ? r.getModel() : null);
             m.put("llmCalls", r != null ? r.getLlmCalls() : null);
             m.put("cacheHits", r != null ? r.getCacheHits() : null);
-            m.put("error", r != null ? r.getError() : null);
+            m.put("error", paperStatus == PaperStatus.FAILED && stage.equals(failedStage) ? paperError : r != null ? r.getError() : null);
             out.add(m);
         }
         return out;

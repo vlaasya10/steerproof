@@ -115,7 +115,7 @@ app.post('/reel', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(Number(PORT), process.env.HOST || '0.0.0.0', () => {
   console.log(`Render service listening on port ${PORT}, STORAGE_DIR: ${STORAGE_DIR}`);
   // Warm up Remotion bundle in background
   import('./reel.js').then(m => m.getBundleLocation()).catch(() => {});

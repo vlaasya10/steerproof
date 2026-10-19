@@ -10,6 +10,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WebConfigTest {
     @Test
+    void acceptsOnlyConfiguredDeploymentOrigins() throws Exception {
+        var request = new MockHttpServletRequest("GET", "/api/papers");
+        request.addHeader("Origin", "https://steerproof.vercel.app");
+        var response = new MockHttpServletResponse();
+        new WebConfig("https://steerproof.vercel.app").corsFilter().getFilter().doFilter(request, response, (req, res) -> {});
+        assertEquals("https://steerproof.vercel.app", response.getHeader("Access-Control-Allow-Origin"));
+        assertThrows(IllegalArgumentException.class, () -> new WebConfig("*"));
+    }
+    @Test
     void includesCorsHeadersWhenDownstreamUploadFails() throws Exception {
         var registration = new WebConfig().corsFilter();
         assertEquals(Ordered.HIGHEST_PRECEDENCE, registration.getOrder());

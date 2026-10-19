@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { API_BASE } from "@/lib/api";
+import { fileUrl } from "@/lib/api";
 
 export interface BBox {
   l: number;
@@ -62,7 +62,7 @@ export function PageHighlight({
   return (
     <div className={`relative inline-block bg-white ${className}`} data-testid="page-highlight">
       <img
-        src={`${API_BASE}/files/pages/${paperId}/${page}.png`}
+        src={fileUrl(`pages/${paperId}/${page}.png`)}
         alt={`Page ${page}`}
         className={`block w-full h-auto ${imgClassName}`}
         onLoad={() => setLoaded(true)}

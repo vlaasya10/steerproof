@@ -4,13 +4,22 @@ Base URL: `http://localhost:8080`. JSON everywhere. Errors use the shape `{ "err
 
 ## Public API (Spring backend)
 
+### Deployment access
+
+`GET /api/auth/config` is public and returns `{ "enabled": true }` when workspace access is configured.
+`POST /api/auth/login` accepts `{ "password": "..." }` and returns `{ "token": "...", "mediaToken": "...", "expiresAt": "..." }`, or HTTP 401 for an incorrect password. Responses are not cached. Sessions expire after eight hours.
+
+When enabled, all other endpoints except `/actuator/health` require `Authorization: Bearer <token>`. Browser images, videos and downloads under `/files/**` may instead use `?access_token=<mediaToken>`. Media tokens cannot authorize API calls. Treat both tokens as secrets. The frontend stores them in the current tab's session storage and clears them on logout or an API 401. Changing `DEPLOYMENT_ACCESS_KEY` invalidates existing sessions.
+
+The production profile requires a workspace password of at least 32 characters and an exact `CORS_ALLOWED_ORIGINS` allowlist. Local development remains open unless `DEPLOYMENT_ACCESS_KEY` is set. This is shared workspace access; reviewer names are audit labels and are not verified individual identities. It is intended for a private, trusted review team.
+
 ### Papers
 
 `PATCH /api/papers/{id}` takes `{ "name":"My paper name", "actor":"Laasya" }` and returns `{ "paperId":"P-0001", "displayName":"My paper name" }`. Names must contain 1–200 nonblank characters. The workspace name is separate from the scientific title and citations. List/detail responses include `displayName`.
 
 `DELETE /api/papers/{id}` takes `{ "actor":"Laasya" }` and returns HTTP 204. It deletes the paper, dependent passages/claims/assets/reviews/runs, and owned PDF/page/render/audio/export files. Audit history and shared media/LLM caches are retained. Active pipeline stages return `409 PAPER_PROCESSING`; unknown papers return 404. File staging is restored if the database transaction fails. Paper IDs are never reused.
 
-PDF uploads allow up to 25 MB per file and 130 MB per request. Larger uploads return HTTP 413 with error `UPLOAD_TOO_LARGE`. CORS permits `http://localhost:3000` and `http://127.0.0.1:3000`, including preflight requests and error responses.
+PDF uploads allow up to 25 MB per file and 130 MB per request. Larger uploads return HTTP 413 with error `UPLOAD_TOO_LARGE`. Local CORS defaults to `http://localhost:3000` and `http://127.0.0.1:3000`; `CORS_ALLOWED_ORIGINS` configures deployed frontend origins, including preflight requests and error responses.
 
 ```
 POST /api/papers                         multipart: file (pdf) | form: url ; optional: theme, batchId

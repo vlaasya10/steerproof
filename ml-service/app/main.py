@@ -60,10 +60,11 @@ async def fetch_url(req: FetchUrlRequest):
 @app.post("/parse", response_model=ParseResponse)
 def parse_endpoint(req: ParseRequest):
     try:
-        pdf_full_path = str(settings.storage_dir / req.pdfPath)
+        relative_pdf = req.pdfPath.replace("\\", "/")
+        pdf_full_path = str(settings.storage_dir / relative_pdf)
         if not Path(pdf_full_path).exists():
             # Check relative to repo root
-            alt = Path(__file__).resolve().parent.parent.parent / req.pdfPath
+            alt = Path(__file__).resolve().parent.parent.parent / relative_pdf
             if alt.exists():
                 pdf_full_path = str(alt)
             else:

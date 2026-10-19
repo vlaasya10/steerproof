@@ -46,6 +46,12 @@ class StorageServiceTest {
     }
 
     @Test
+    void testWindowsPathsRemainPortableAndConfined() {
+        assertEquals(tempDir.resolve("papers").resolve("paper.pdf"), storageService.resolve("papers\\paper.pdf"));
+        assertThrows(ApiException.class, () -> storageService.resolve("..\\outside.txt"));
+    }
+
+    @Test
     void testSaveAndLoadFile() throws IOException {
         String savedRel = storageService.saveFile("test", "hello.txt", new ByteArrayInputStream("hello world".getBytes()));
         assertNotNull(savedRel);

@@ -53,7 +53,7 @@ public class StorageService {
             throw new ApiException(HttpStatus.BAD_REQUEST, "PATH_TRAVERSAL", "Path traversal attempt detected");
         }
 
-        Path resolved = rootPath.resolve(relativePath).normalize();
+        Path resolved = rootPath.resolve(relativePath.replace('\\', '/')).normalize();
 
         // Must remain within rootPath
         if (!resolved.startsWith(rootPath)) {
@@ -68,7 +68,7 @@ public class StorageService {
         Files.createDirectories(targetDir);
         Path targetFile = targetDir.resolve(filename);
         Files.copy(inputStream, targetFile, StandardCopyOption.REPLACE_EXISTING);
-        return rootPath.relativize(targetFile).toString();
+        return rootPath.relativize(targetFile).toString().replace('\\', '/');
     }
 
     public Resource loadAsResource(String relativePath) {

@@ -3,6 +3,7 @@ import "./globals.css";
 import { ReviewerProvider } from "@/components/ReviewerContext";
 import { Navbar } from "@/components/Navbar";
 import { ToastContainer } from "@/components/Toast";
+import { WorkspaceAccess } from "@/components/WorkspaceAccess";
 
 export const metadata: Metadata = {
   title: "SteerProof | Clinical Evidence Verification",
@@ -17,11 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-cream text-ink min-h-screen antialiased flex flex-col">
-        <ReviewerProvider>
+        <WorkspaceAccess><ReviewerProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
           <ToastContainer />
-        </ReviewerProvider>
+        </ReviewerProvider></WorkspaceAccess>
       </body>
     </html>
   );

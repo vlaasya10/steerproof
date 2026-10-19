@@ -14,6 +14,7 @@ export async function getBrowser(): Promise<Browser> {
     if (fs.existsSync('/usr/bin/chromium')) {
       launchOptions.executablePath = '/usr/bin/chromium';
     }
+    if (process.env.BROWSER_EXECUTABLE) launchOptions.executablePath = process.env.BROWSER_EXECUTABLE;
     browserInstance = await chromium.launch(launchOptions);
   }
   return browserInstance;
