@@ -17,7 +17,7 @@ public class WorkspaceAuthFilter extends OncePerRequestFilter {
     @Override protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-        if (!auth.enabled() || path.equals("/actuator/health") || path.equals("/api/auth/config")
+        if (!auth.enabled() || path.equals("/health") || path.equals("/actuator/health") || path.equals("/api/auth/config")
                 || (path.equals("/api/auth/login") && request.getMethod().equals("POST"))) {
             chain.doFilter(request, response);
             return;

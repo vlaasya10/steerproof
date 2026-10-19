@@ -21,6 +21,8 @@
 !render-service/templates/**
 !render-service/remotion/
 !render-service/remotion/**
+!render-service/scripts/
+!render-service/scripts/**
 !render-service/assets/
 !render-service/assets/**
 !demo/

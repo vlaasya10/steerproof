@@ -86,7 +86,7 @@ public class Gate2AndExportIntegrationTest {
     @BeforeEach
     void setupMocks() {
         Mockito.when(renderServiceClient.renderCarousel(anyString(), anyList(), anyString(), anyBoolean()))
-                .thenReturn(new RenderServiceClient.RenderResult(List.of("renders/test/carousel/1.png"), List.of()));
+                .thenAnswer(call -> new RenderServiceClient.RenderResult(List.of("renders/" + call.getArgument(0) + "/carousel/1.png"), List.of()));
 
         Mockito.when(renderServiceClient.renderStatic(anyString(), anyMap(), anyString(), anyBoolean()))
                 .thenReturn(new RenderServiceClient.RenderResult(List.of("renders/test/static.png"), List.of()));
@@ -154,6 +154,10 @@ public class Gate2AndExportIntegrationTest {
             a.setType(t);
             a.setContent("{}");
             a.setStatus(AssetStatus.APPROVED); // Pre-approved so we focus on carousel
+            if (t != AssetType.CAPTION) {
+                a.setRenderPaths(objectMapper.writeValueAsString(List.of("renders/" + paperId + "/"
+                        + (t == AssetType.STATIC ? "static.png" : "reel.mp4"))));
+            }
             a.setVersion(1);
             assetRepository.save(a);
         }
@@ -212,6 +216,15 @@ public class Gate2AndExportIntegrationTest {
         assertEquals(AssetStatus.APPROVED, approvedCar.getStatus());
         assertEquals("Test Reviewer", approvedCar.getApprovedBy());
 
+        // An ephemeral restart must not turn approved assets into a silently incomplete export.
+        ApiException missing = assertThrows(ApiException.class, () -> exportController.exportPaper(paperId));
+        assertEquals("EXPORT_FILES_MISSING", missing.getErrorCode());
+        Path rendered = storageService.resolve("renders/" + paperId + "/carousel/1.png");
+        Files.createDirectories(rendered.getParent());
+        Files.writeString(rendered, "rendered fixture");
+        Files.writeString(rendered.getParent().getParent().resolve("static.png"), "static fixture");
+        Files.writeString(rendered.getParent().getParent().resolve("reel.mp4"), "reel fixture");
+
         // 8. Call export -> Should succeed with 200 OK!
         ResponseEntity<?> exportOk = exportController.exportPaper(paperId);
         assertEquals(HttpStatus.OK, exportOk.getStatusCode());
@@ -230,6 +243,7 @@ public class Gate2AndExportIntegrationTest {
             assertNotNull(zipFile.getEntry("sources.md"), "sources.md must be inside export zip");
             assertNotNull(zipFile.getEntry("review_report.json"), "review_report.json must be inside export zip");
             assertNotNull(zipFile.getEntry("caption.txt"), "caption.txt must be inside export zip");
+            assertNotNull(zipFile.getEntry("carousel/1.png"), "Approved rendered media must be inside export zip");
         }
 
         // Verify paper status in DB

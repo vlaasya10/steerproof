@@ -1,5 +1,7 @@
 # Deploy to Vercel and Render
 
+**Using Render Free (512 MB)? Follow [the Free deployment guide](RENDER_FREE.md).** The instructions below describe the full processing deployment on a machine with more memory. The Docker image now defaults to temporary storage and automatically selects API-only mode under a small memory limit. Free hosting cannot run the complete pipeline locally.
+
 The frontend runs on Vercel. One Docker web service on Render runs Spring, the Python ML service, and the Node renderer together. They share one persistent disk; only Spring is public. PostgreSQL is a separate database. Keep **one backend instance**: local files and job recovery are designed for a single worker.
 
 This setup does not create cloud resources automatically. Render persistent disks require paid hosting, and the free 512 MB instance is too small for Docling plus Chromium/video rendering. Start by evaluating a backend with at least 4 GB RAM, use render concurrency 1, and measure peak memory with your PDFs. Larger documents may need more. Database, compute and disk charges are separate. If hosting must remain free, keep the backend and database on your own machine and use Vercel only for the frontend; a public HTTPS endpoint is still required.

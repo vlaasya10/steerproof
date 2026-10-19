@@ -10,17 +10,25 @@ FROM node:22-bookworm-slim AS node-build
 WORKDIR /app/render-service
 COPY render-service/package*.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
+COPY render-service/remotion ./remotion
+COPY render-service/src ./src
+COPY render-service/assets ./assets
+COPY render-service/scripts ./scripts
+COPY render-service/tsconfig.json ./tsconfig.json
+# Webpack runs during image construction, never during API startup.
+RUN node --import tsx scripts/build-bundle.ts
 
 FROM eclipse-temurin:21-jre-jammy AS java-runtime
 
 FROM python:3.11-slim-bookworm AS runtime
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 \
     JAVA_HOME=/opt/java/openjdk NODE_ENV=production \
-    STORAGE_DIR=/var/data/storage LLM_CACHE_DIR=/var/data/storage/cache/llm \
-    HF_HOME=/var/data/cache/huggingface XDG_CACHE_HOME=/var/data/cache \
+    STORAGE_DIR=/tmp/steerproof/storage LLM_CACHE_DIR=/tmp/steerproof/storage/cache/llm \
+    HF_HOME=/tmp/steerproof/cache/huggingface XDG_CACHE_HOME=/tmp/steerproof/cache \
     BROWSER_EXECUTABLE=/usr/bin/chromium FFMPEG_PATH=/usr/bin/ffmpeg FFPROBE_PATH=/usr/bin/ffprobe \
     SPRING_PROFILES_ACTIVE=prod JAVA_TOOL_OPTIONS=-Duser.timezone=UTC \
-    HOME=/home/app PORT=10000 RENDER_CONCURRENCY=1 \
+    HOME=/home/app PORT=10000 RENDER_CONCURRENCY=1 PROCESSING_MODE=auto \
+    REMOTION_BUNDLE_DIR=/app/render-service/remotion-bundle REMOTION_ALLOW_RUNTIME_BUNDLE=false \
     OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2
 ENV PATH="/opt/java/openjdk/bin:${PATH}"
 RUN apt-get update && apt-get install -y --no-install-recommends \

@@ -321,6 +321,7 @@ public class AssetController {
         try {
             pipelineService.reRenderAsset(asset, false);
         } catch (Exception e) {
+            if (e instanceof ApiException api && api.getErrorCode().equals("PROCESSING_UNAVAILABLE")) throw api;
             log.error("Failed to re-render approved asset without watermark: {}", e.getMessage(), e);
             throw new ApiException(HttpStatus.BAD_GATEWAY, "APPROVAL_RENDER_FAILED",
                     "Asset approval could not finish rendering. Please retry. " + e.getMessage());

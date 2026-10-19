@@ -13,6 +13,12 @@ import java.util.Map;
 public class MlServiceClient {
 
     private final RestClient restClient;
+    @org.springframework.beans.factory.annotation.Autowired
+    private com.steerclub.steerproof.common.ProcessingAvailability processingAvailability;
+
+    private void requireProcessing() {
+        if (processingAvailability != null) processingAvailability.requireProcessing();
+    }
 
     public MlServiceClient(
             RestClient.Builder restClientBuilder,
@@ -32,6 +38,7 @@ public class MlServiceClient {
 
     /** The Gemini model the running ml-service is configured with (all LLM stages use it), or null if unreachable. */
     public String geminiModel() {
+        if (processingAvailability != null && !processingAvailability.enabled()) return null;
         try {
             Map<?, ?> health = restClient.get().uri("/health").retrieve().body(Map.class);
             Object model = health != null ? health.get("gemini_model") : null;
@@ -42,6 +49,7 @@ public class MlServiceClient {
     }
 
     public FetchUrlResponse fetchUrl(String paperId, String url) {
+        requireProcessing();
         return restClient.post()
                 .uri("/fetch-url")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -51,6 +59,7 @@ public class MlServiceClient {
     }
 
     public ParseResponse parse(String paperId, String pdfPath) {
+        requireProcessing();
         return restClient.post()
                 .uri("/parse")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -66,6 +75,7 @@ public class MlServiceClient {
                 "passages", passages,
                 "theme", theme != null ? theme : ""
         );
+        requireProcessing();
         return restClient.post()
                 .uri("/extract")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -75,6 +85,7 @@ public class MlServiceClient {
     }
 
     public VerifyResponse verify(String paperId, List<VerifyClaimDto> claims, List<PassageDto> passages) {
+        requireProcessing();
         return restClient.post()
                 .uri("/verify")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -93,6 +104,7 @@ public class MlServiceClient {
         if (only != null) {
             body.put("only", only);
         }
+        requireProcessing();
         return restClient.post()
                 .uri("/write")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -102,6 +114,7 @@ public class MlServiceClient {
     }
 
     public IllustrationCheckResponse checkIllustrations(String paperId, List<IllustrationItemDto> items) {
+        requireProcessing();
         return restClient.post()
                 .uri("/check/illustrations")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -112,6 +125,7 @@ public class MlServiceClient {
 
     /** Synthesises per-scene voiceover with edge-tts into storage/audio/{assetId}/scene-{n}.mp3 (+ word timings). */
     public Map<String, Object> reelAudio(String assetId, List<Map<String, Object>> scenes, String language) {
+        requireProcessing();
         return restClient.post()
                 .uri("/reel/audio")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -122,6 +136,7 @@ public class MlServiceClient {
 
     /** Resolves Pixabay b-roll for all scenes of one reel in a single call (no clip id is reused within the reel). */
     public Map<String, Object> reelBroll(String assetId, String paperId, List<Map<String, Object>> scenes) {
+        requireProcessing();
         return restClient.post()
                 .uri("/reel/broll")
                 .contentType(MediaType.APPLICATION_JSON)

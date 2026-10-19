@@ -33,6 +33,7 @@ out/
 build/
 dist/
 .remotion/
+remotion-bundle/
 
 # IDE and OS
 .idea/

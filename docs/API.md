@@ -6,6 +6,10 @@ Base URL: `http://localhost:8080`. JSON everywhere. Errors use the shape `{ "err
 
 ### Deployment access
 
+`GET /health` is public liveness and returns `{ "status":"ok", "service":"api" }` without querying PostgreSQL or processing services. `/actuator/health` remains readiness (including PostgreSQL). ML/render readiness is opt-in via `app.health.check-processing=true`; leave it off for Free.
+
+`GET /api/capabilities` requires workspace authentication when enabled. It returns `{ "mode":"api"|"full", "processingEnabled":false|true, "storageEphemeral":true|false, "message":"..." }`. `processingEnabled` describes configuration, not a live worker-health probe. In API-only mode, uploads, generation, regeneration and stage retries return HTTP 503 `PROCESSING_UNAVAILABLE` before controller state changes. Internal ML/render clients enforce the same guard. Claim review and existing-record management remain available. Caption approval and export keep their original gates; approving visual assets still requires successful final rendering and fails rather than falsely approving missing output.
+
 `GET /api/auth/config` is public and returns `{ "enabled": true }` when workspace access is configured.
 `POST /api/auth/login` accepts `{ "password": "..." }` and returns `{ "token": "...", "mediaToken": "...", "expiresAt": "..." }`, or HTTP 401 for an incorrect password. Responses are not cached. Sessions expire after eight hours.
 
@@ -14,6 +18,10 @@ When enabled, all other endpoints except `/actuator/health` require `Authorizati
 The production profile requires a workspace password of at least 32 characters and an exact `CORS_ALLOWED_ORIGINS` allowlist. Local development remains open unless `DEPLOYMENT_ACCESS_KEY` is set. This is shared workspace access; reviewer names are audit labels and are not verified individual identities. It is intended for a private, trusted review team.
 
 ### Papers
+
+Exports retain both approval gates. If an approved visual asset has missing/empty media files (for example after a Free instance restart), export returns `422 EXPORT_FILES_MISSING` with `details.missingFiles` and does not mark the paper exported. Restore the matching media or regenerate/review it in full mode.
+
+Claim evidence relinking fails closed: unavailable processing returns 503, and a failed/empty verifier response returns 502 `VERIFICATION_UNAVAILABLE`; the claim update rolls back. Editing copy without verified replacement evidence cannot clear `NEEDS_EVIDENCE` (409 `ACTION_NOT_ALLOWED`).
 
 `PATCH /api/papers/{id}` takes `{ "name":"My paper name", "actor":"Laasya" }` and returns `{ "paperId":"P-0001", "displayName":"My paper name" }`. Names must contain 1–200 nonblank characters. The workspace name is separate from the scientific title and citations. List/detail responses include `displayName`.
 

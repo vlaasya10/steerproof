@@ -13,6 +13,12 @@ import java.util.Map;
 public class RenderServiceClient {
 
     private final RestClient restClient;
+    @org.springframework.beans.factory.annotation.Autowired
+    private com.steerclub.steerproof.common.ProcessingAvailability processingAvailability;
+
+    private void requireProcessing() {
+        if (processingAvailability != null) processingAvailability.requireProcessing();
+    }
 
     public RenderServiceClient(
             RestClient.Builder restClientBuilder,
@@ -31,6 +37,7 @@ public class RenderServiceClient {
     }
 
     public RenderResult renderCarousel(String paperId, List<Map<String, Object>> slides, String citation, boolean draft) {
+        requireProcessing();
         return restClient.post()
                 .uri("/carousel")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -45,6 +52,7 @@ public class RenderServiceClient {
     }
 
     public RenderResult renderStatic(String paperId, Map<String, Object> staticContent, String citation, boolean draft) {
+        requireProcessing();
         return restClient.post()
                 .uri("/static")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -59,6 +67,7 @@ public class RenderServiceClient {
     }
 
     public Map<String, Object> renderReel(String paperId, List<Map<String, Object>> scenes, String citation, boolean draft) {
+        requireProcessing();
         return restClient.post()
                 .uri("/reel")
                 .contentType(MediaType.APPLICATION_JSON)

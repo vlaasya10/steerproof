@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Component
 @Profile("prod")
+@org.springframework.boot.autoconfigure.condition.ConditionalOnProperty(name = "app.health.check-processing", havingValue = "true")
 public class InternalServicesHealthIndicator implements HealthIndicator {
     private final RestClient client;
     private final List<String> urls;

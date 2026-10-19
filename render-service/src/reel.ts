@@ -1,33 +1,13 @@
 import path from 'path';
 import fs from 'fs';
-import { bundle } from '@remotion/bundler';
+import {getBundleLocation} from './bundle.js';
+export {getBundleLocation} from './bundle.js';
 import { renderMedia, selectComposition } from '@remotion/renderer';
 import { chromium } from 'playwright';
 import { ReelProps } from '../remotion/types';
 
-let bundlePromise: Promise<string> | null = null;
 let isRendering = false;
 const renderQueue: Array<() => Promise<any>> = [];
-
-export function getBundleLocation(): Promise<string> {
-  if (!bundlePromise) {
-    const entryPoint = path.resolve(__dirname, '../remotion/index.ts');
-    // assets/ is Remotion's public dir so fonts load via staticFile().
-    const publicDir = path.resolve(__dirname, '../assets');
-    console.log('Bundling Remotion at startup from:', entryPoint);
-    bundlePromise = bundle({ entryPoint, publicDir })
-      .then(loc => {
-        console.log('Remotion bundle ready at:', loc);
-        return loc;
-      })
-      .catch(err => {
-        console.error('Failed to bundle Remotion:', err);
-        bundlePromise = null;
-        throw err;
-      });
-  }
-  return bundlePromise;
-}
 
 // Queue execution helper to enforce 1 render at a time
 async function processQueue() {

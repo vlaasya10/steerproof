@@ -112,6 +112,10 @@ public class ClaimService {
                     claim.setPassageId(passage.getId());
                     reVerifyClaim(claim, passage);
                 } else {
+                    if (claim.getDoctorStatus() == DoctorStatus.NEEDS_EVIDENCE) {
+                        throw new ApiException(HttpStatus.CONFLICT, "ACTION_NOT_ALLOWED",
+                                "Re-link and verify evidence before marking this claim edited");
+                    }
                     claim.setDoctorStatus(DoctorStatus.EDITED);
                 }
             }
@@ -235,10 +239,14 @@ public class ClaimService {
                     claim.setDoctorStatus(DoctorStatus.NEEDS_EVIDENCE);
                 }
             } else {
-                claim.setDoctorStatus(DoctorStatus.EDITED);
+                throw new ApiException(HttpStatus.BAD_GATEWAY, "VERIFICATION_UNAVAILABLE",
+                        "Evidence verification returned no result. Claim changes were not saved.");
             }
+        } catch (ApiException e) {
+            throw e;
         } catch (Exception e) {
-            claim.setDoctorStatus(DoctorStatus.EDITED);
+            throw new ApiException(HttpStatus.BAD_GATEWAY, "VERIFICATION_UNAVAILABLE",
+                    "Evidence verification did not complete. Claim changes were not saved. Retry in full mode.");
         }
     }
 

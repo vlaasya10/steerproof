@@ -1,10 +1,10 @@
 """Build from an allowlisted context without traversing local data or environments."""
 import argparse
 import os
-from pathlib import Path
 import subprocess
 import tarfile
 import tempfile
+from pathlib import Path
 
 
 def main() -> None:
@@ -13,7 +13,7 @@ def main() -> None:
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     directories = ("deploy", "backend/src/main", "ml-service/app", "render-service/src",
-                   "render-service/templates", "render-service/remotion", "render-service/assets", "demo/papers")
+                   "render-service/templates", "render-service/remotion", "render-service/assets", "render-service/scripts", "demo/papers")
     files = ("Dockerfile", ".dockerignore", "backend/pom.xml", "ml-service/requirements.txt",
              "render-service/package.json", "render-service/package-lock.json", "render-service/tsconfig.json")
     cache = root / ".cache" / "deployment"

@@ -128,6 +128,28 @@ public class ExportController {
             ));
         }
 
+        // Free instances can retain approvals in PostgreSQL while losing media on restart.
+        // Never report a successful export that silently omits approved visual assets.
+        List<String> missingFiles = new ArrayList<>();
+        for (AssetEntity asset : assets) {
+            if (asset.getType().name().equals("CAPTION")) continue;
+            try {
+                JsonNode paths = objectMapper.readTree(asset.getRenderPaths() == null ? "[]" : asset.getRenderPaths());
+                if (paths == null || !paths.isArray() || paths.isEmpty()) missingFiles.add(asset.getId());
+                else for (JsonNode path : paths) {
+                    String relative = path.asText().replace('\\', '/');
+                    if (!relative.startsWith("renders/" + paperId + "/")
+                            || !Files.isRegularFile(storageService.resolve(relative))
+                            || Files.size(storageService.resolve(relative)) == 0) missingFiles.add(relative);
+                }
+            } catch (IOException | ApiException error) { missingFiles.add(asset.getId()); }
+        }
+        if (!missingFiles.isEmpty()) {
+            throw new ApiException(HttpStatus.UNPROCESSABLE_ENTITY, "EXPORT_FILES_MISSING",
+                    "Approved media files are missing. Temporary storage may have been cleared. Restore the matching files or regenerate and review them in full mode before exporting.",
+                    Map.of("missingFiles", missingFiles));
+        }
+
         // Determine reviewer name and date from asset approvals
         String reviewerName = "Jathin Reddy Yanna (non-clinician reviewer)";
         for (AssetEntity a : assets) {
