@@ -1,0 +1,32 @@
+{
+  "name": "render-service",
+  "version": "1.0.0",
+  "description": "SteerProof render service using Playwright and Express",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "lint:colors": "node -e \"const { execSync } = require('child_process'); const res = execSync('grep -rnE \\\"#[0-9a-fA-F]{3,6}\\\" --exclude=\\\"brand.ts\\\" templates/ src/ remotion/ || true', { encoding: 'utf-8' }).trim(); if (res) { console.error('Hex literals found outside brand.ts:\\n' + res); process.exit(1); } else { console.log('lint:colors passed! No hex literals found outside brand.ts.'); }\"",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.536",
+    "@remotion/renderer": "^4.0.536",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "playwright": "^1.48.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.536"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}

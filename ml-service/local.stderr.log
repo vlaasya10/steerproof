@@ -1,0 +1,253 @@
+INFO:ml-service:pixabay key loaded: yes
+INFO:     Started server process [26068]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+INFO:ml-service.reel.audio:Cache hit for audio: 813448e8...
+INFO:ml-service.reel.audio:Cache hit for audio: be694270...
+INFO:ml-service.reel.audio:Cache hit for audio: c9d0c0e6...
+INFO:ml-service.reel.audio:Cache hit for audio: eed16dc9...
+INFO:ml-service.reel.audio:Cache hit for audio: 49a33022...
+INFO:ml-service.reel.broll:Skipping Pixabay hit 2339: denylisted tag 'people'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 236256 to ..\storage\broll\pixabay-236256.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3160: denylisted tag 'hands'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 377601: denylisted tag 'woman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137265: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137250: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137260: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137264: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 19454 to ..\storage\broll\pixabay-19454.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 145428: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 140807: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 122232: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 123514: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 122229: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 140808: denylisted tag 'student'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 140587 to ..\storage\broll\pixabay-140587.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3180: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3176: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 42408: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3172: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3168: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 169446: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 8255 to ..\storage\broll\pixabay-8255.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 49813: denylisted tag 'doctor'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 43559: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 49815: denylisted tag 'doctor'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 1028: denylisted tag 'girl'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 232538 to ..\storage\broll\pixabay-232538.mp4
+WARNING:app.write.writer:Writer output failed initial validation with 3 errors: ["Slide 5: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block.", "Scene 4: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block.", "Caption para 2: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block."]. Retrying once...
+WARNING:app.write.writer:Writer retry still had errors: ["Slide 1: headline exceeds 48 chars (50 chars: 'Living with Type 1 Diabetes *and* managing weight?')"]
+INFO:ml-service.reel.audio:Cache hit for audio: 813448e8...
+INFO:ml-service.reel.audio:Cache hit for audio: be694270...
+INFO:ml-service.reel.audio:Cache hit for audio: c9d0c0e6...
+INFO:ml-service.reel.audio:Cache hit for audio: eed16dc9...
+INFO:ml-service.reel.audio:Cache hit for audio: 49a33022...
+INFO:ml-service.reel.broll:Skipping Pixabay hit 2339: denylisted tag 'people'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3160: denylisted tag 'hands'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 377601: denylisted tag 'woman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137265: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137250: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137260: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137264: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 145428: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 140807: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 122232: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 123514: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 122229: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 140808: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3180: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3176: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 42408: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3172: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3168: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 169446: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 49813: denylisted tag 'doctor'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 43559: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 49815: denylisted tag 'doctor'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 1028: denylisted tag 'girl'
+INFO:ml-service.reel.audio:Cache hit for audio: 813448e8...
+INFO:ml-service.reel.audio:Cache hit for audio: be694270...
+INFO:ml-service.reel.audio:Cache hit for audio: c9d0c0e6...
+INFO:ml-service.reel.audio:Cache hit for audio: eed16dc9...
+INFO:ml-service.reel.audio:Cache hit for audio: 49a33022...
+INFO:ml-service.reel.audio:Cache hit for audio: 813448e8...
+INFO:ml-service.reel.audio:Cache hit for audio: be694270...
+INFO:ml-service.reel.audio:Cache hit for audio: c9d0c0e6...
+INFO:ml-service.reel.audio:Cache hit for audio: eed16dc9...
+INFO:ml-service.reel.audio:Cache hit for audio: 49a33022...
+WARNING:app.write.writer:Writer output failed initial validation with 3 errors: ["Slide 5: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block.", "Scene 4: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block.", "Caption para 2: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block."]. Retrying once...
+WARNING:app.write.writer:Writer retry still had errors: ["Slide 1: headline exceeds 48 chars (50 chars: 'Living with Type 1 Diabetes *and* managing weight?')"]
+INFO:ml-service.reel.audio:Cache hit for audio: 813448e8...
+INFO:ml-service.reel.audio:Cache hit for audio: be694270...
+INFO:ml-service.reel.audio:Cache hit for audio: c9d0c0e6...
+INFO:ml-service.reel.audio:Cache hit for audio: eed16dc9...
+INFO:ml-service.reel.audio:Cache hit for audio: 49a33022...
+INFO:ml-service.reel.broll:Skipping Pixabay hit 2339: denylisted tag 'people'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3160: denylisted tag 'hands'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 377601: denylisted tag 'woman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137265: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137250: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137260: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 137264: denylisted tag 'businessman'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 145428: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 140807: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 122232: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 123514: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 122229: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 140808: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3180: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3176: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 42408: denylisted tag 'man'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3172: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3168: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 169446: denylisted tag 'hand'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 49813: denylisted tag 'doctor'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 43559: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 49815: denylisted tag 'doctor'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 1028: denylisted tag 'girl'
+INFO:docling.datamodel.document:detected formats: [<InputFormat.PDF: 'pdf'>]
+INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.document_converter:Initializing pipeline for StandardPdfPipeline with options hash 5f4950ded83d09b0a3b1978d700e85f3
+INFO:docling.models.factories.base_factory:Loading plugin 'docling_defaults'
+INFO:docling.models.factories:Registered picture descriptions: ['picture_description_vlm_engine', 'vlm', 'api']
+INFO:docling.models.factories.base_factory:Loading plugin 'docling_defaults'
+INFO:docling.models.factories:Registered ocr engines: ['auto', 'easyocr', 'kserve_v2_ocr', 'nemotron-ocr', 'ocrmac', 'rapidocr', 'tesserocr', 'tesseract']
+INFO:docling.models.stages.ocr.auto_ocr_model:rapidocr cannot be used because onnxruntime is not installed.
+INFO:docling.models.stages.ocr.auto_ocr_model:easyocr cannot be used because it is not installed.
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+INFO:docling.models.stages.ocr.auto_ocr_model:Auto OCR model selected rapidocr with torch.
+INFO:docling.models.factories.base_factory:Loading plugin 'docling_defaults'
+INFO:docling.models.factories:Registered layout engines: ['layout_object_detection', 'docling_layout_default', 'docling_experimental_table_crops_layout']
+INFO:docling.models.inference_engines.object_detection.transformers_engine:Initializing Transformers object-detection engine
+INFO:docling.models.inference_engines.common.hf_vision_base:Downloading object-detection model from HuggingFace: docling-project/docling-layout-heron@main
+INFO:docling.models.utils.hf_model_download:Fetching model docling-project/docling-layout-heron (revision: main)...
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-layout-heron/revision/main "HTTP/1.1 200 OK"
+INFO:docling.models.utils.hf_model_download:Downloaded model docling-project/docling-layout-heron to C:\projects\steerproof-master\.cache\huggingface\hub\models--docling-project--docling-layout-heron\snapshots\8f39ad3c0b4c58e9c2d2c84a38465abf757272d8 in 1.56 sec.
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights:  26%|##6       | 202/770 [00:00<00:00, 1708.72it/s]Loading weights:  48%|####8     | 373/770 [00:00<00:00, 1180.72it/s]Loading weights:  93%|#########3| 718/770 [00:00<00:00, 1976.03it/s]Loading weights: 100%|##########| 770/770 [00:00<00:00, 1896.77it/s]
+INFO:docling.models.inference_engines.object_detection.transformers_engine:Transformers engine ready (device=cpu, dtype=torch.float32)
+INFO:docling.models.factories.base_factory:Loading plugin 'docling_defaults'
+INFO:docling.models.factories:Registered table structure engines: ['docling_tableformer', 'docling_tableformer_v2', 'granite_vision_table']
+INFO:docling.models.utils.hf_model_download:Fetching model docling-project/docling-models (revision: v2.3.0)...
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-models/revision/v2.3.0 "HTTP/1.1 200 OK"
+INFO:docling.models.utils.hf_model_download:Model docling-project/docling-models already cached at C:\projects\steerproof-master\.cache\huggingface\hub\models--docling-project--docling-models\snapshots\fc0f2d45e2218ea24bce5045f58a389aed16dc23
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+INFO:docling.pipeline.base_pipeline:Processing document P-0002.pdf
+[INFO] 2026-10-18 23:58:20,251 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-18 23:58:20,276 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-18 23:58:20,299 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_det_small.pth
+[INFO] 2026-10-18 23:58:20,300 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_det_small.pth
+C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\torch\nn\modules\conv.py:560: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\native\Convolution.cpp:1105.)
+  return F.conv2d(
+[INFO] 2026-10-18 23:58:22,946 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-18 23:58:22,948 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-18 23:58:22,953 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-10-18 23:58:22,953 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-10-18 23:58:23,278 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-18 23:58:23,279 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-18 23:58:23,328 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_rec_small.pth
+[INFO] 2026-10-18 23:58:23,330 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_rec_small.pth
+INFO:docling.document_converter:Finished converting document P-0002.pdf in 181.73 sec.
+INFO:app.parse.meta:paper meta extracted: {'title': 'DEPARTMENT OF CLINICAL BIOCHEMISTRY', 'authors': None, 'year': None, 'journal': None, 'doi': None} (sources: {'title': 'pdf:title-passage'})
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+WARNING:app.write.writer:Writer output failed initial validation with 5 errors: ["Caption para 1: illustration uses 'biology', which reads as a biological/medical/causal fact. Describe only an everyday moment, feeling or routine.", "Slide 3: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block.", "Scene 2: kind 'claim' contains the brand line 'willpower'. Brand lines are kind 'brand' and must be their own block.", "Scene 3: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block.", "Caption para 2: kind 'claim' contains the brand line 'steer'. Brand lines are kind 'brand' and must be their own block."]. Retrying once...
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+WARNING:app.write.writer:Writer retry still had errors: ["Static: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block."]
+INFO:docling.datamodel.document:detected formats: [<InputFormat.PDF: 'pdf'>]
+INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.document_converter:Initializing pipeline for StandardPdfPipeline with options hash 5f4950ded83d09b0a3b1978d700e85f3
+INFO:docling.models.stages.ocr.auto_ocr_model:rapidocr cannot be used because onnxruntime is not installed.
+INFO:docling.models.stages.ocr.auto_ocr_model:easyocr cannot be used because it is not installed.
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+INFO:docling.models.stages.ocr.auto_ocr_model:Auto OCR model selected rapidocr with torch.
+INFO:docling.models.inference_engines.object_detection.transformers_engine:Initializing Transformers object-detection engine
+INFO:docling.models.inference_engines.common.hf_vision_base:Downloading object-detection model from HuggingFace: docling-project/docling-layout-heron@main
+INFO:docling.models.utils.hf_model_download:Fetching model docling-project/docling-layout-heron (revision: main)...
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-layout-heron/revision/main "HTTP/1.1 200 OK"
+INFO:docling.models.utils.hf_model_download:Model docling-project/docling-layout-heron already cached at C:\projects\steerproof-master\.cache\huggingface\hub\models--docling-project--docling-layout-heron\snapshots\8f39ad3c0b4c58e9c2d2c84a38465abf757272d8
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights:  18%|#7        | 137/770 [00:00<00:00, 1330.95it/s]Loading weights:  35%|###5      | 271/770 [00:00<00:00, 820.70it/s] Loading weights:  47%|####7     | 364/770 [00:00<00:00, 679.85it/s]Loading weights:  57%|#####7    | 439/770 [00:00<00:00, 649.93it/s]Loading weights: 100%|##########| 770/770 [00:00<00:00, 1169.57it/s]
+INFO:docling.models.inference_engines.object_detection.transformers_engine:Transformers engine ready (device=cpu, dtype=torch.float32)
+INFO:docling.models.utils.hf_model_download:Fetching model docling-project/docling-models (revision: v2.3.0)...
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-models/revision/v2.3.0 "HTTP/1.1 200 OK"
+INFO:docling.models.utils.hf_model_download:Model docling-project/docling-models already cached at C:\projects\steerproof-master\.cache\huggingface\hub\models--docling-project--docling-models\snapshots\fc0f2d45e2218ea24bce5045f58a389aed16dc23
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+INFO:docling.pipeline.base_pipeline:Processing document P-0003.pdf
+[INFO] 2026-10-19 10:53:17,408 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-19 10:53:17,417 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-19 10:53:17,450 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_det_small.pth
+[INFO] 2026-10-19 10:53:17,451 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_det_small.pth
+[INFO] 2026-10-19 10:53:20,530 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-19 10:53:20,532 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-19 10:53:20,540 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-10-19 10:53:20,541 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-10-19 10:53:20,760 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-19 10:53:20,761 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-19 10:53:20,801 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_rec_small.pth
+[INFO] 2026-10-19 10:53:20,802 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_rec_small.pth
+INFO:docling.document_converter:Finished converting document P-0003.pdf in 39.00 sec.
+INFO:httpx:HTTP Request: GET https://api.crossref.org/works/10.1007/s00125-018-4787-8 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&term=10.1007%2Fs00125-018-4787-8%5Bdoi%5D "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=30569272 "HTTP/1.1 200 OK"
+INFO:app.parse.meta:paper meta extracted: {'title': 'Metabolic health in normal-weight and obese individuals', 'authors': 'Matthias B. Schulze', 'year': 2018, 'journal': 'Diabetologia', 'doi': '10.1007/s00125-018-4787-8'} (sources: {'title': 'pdf:title-passage', 'authors': 'pdf:metadata', 'doi': 'pdf:text', 'year': 'crossref:issued', 'journal': 'pubmed:esummary'})
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+WARNING:app.write.writer:Writer output failed initial validation with 1 errors: ["Scene 2: motion 'stat' needs an outcome value (%, kg, kcal...); counts of studies/people/years are not stats. Use 'title'."]. Retrying once...
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+WARNING:app.write.writer:Writer retry still had errors: ["Scene 4: illustration uses 'signals', which reads as a biological/medical/causal fact. Describe only an everyday moment, feeling or routine.", "Caption para 3: kind 'claim' contains the brand line 'willpower'. Brand lines are kind 'brand' and must be their own block."]
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:ml-service.reel.audio:edge-tts attempt 1 for: Is 'metabolically healthy' permanent? It...
+INFO:ml-service.reel.audio:edge-tts attempt 1 for: Many with metabolically healthy obesity ...
+INFO:ml-service.reel.audio:edge-tts attempt 1 for: Normal weight, but poor metabolic health...
+INFO:ml-service.reel.audio:edge-tts attempt 1 for: That 3 PM energy crash after lunch? Or t...
+INFO:ml-service.reel.audio:edge-tts attempt 1 for: Doctor-led. Safety first. Personal. Buil...
+INFO:ml-service.reel.broll:Skipping Pixabay hit 131990: denylisted tag 'student'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 131993: denylisted tag 'student'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 272166 to ..\storage\broll\pixabay-272166.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 3019: denylisted tag 'hands'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 11176 to ..\storage\broll\pixabay-11176.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 145344: denylisted tag 'medical'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 26537: denylisted tag 'people'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 205519 to ..\storage\broll\pixabay-205519.mp4
+INFO:ml-service.reel.broll:Skipping Pixabay hit 2339: denylisted tag 'people'
+INFO:ml-service.reel.broll:Skipping Pixabay hit 1046: denylisted tag 'hands'
+INFO:ml-service.reel.broll:Downloading Pixabay clip 233024 to ..\storage\broll\pixabay-233024.mp4
+WARNING:ml-service.reel.broll:B-roll query 'doctor stethoscope' blocked by denylist: 'doctor'
+INFO:ml-service.reel.audio:Cache hit for audio: 0afc1766...
+INFO:ml-service.reel.audio:Cache hit for audio: 48036132...
+INFO:ml-service.reel.audio:Cache hit for audio: 4fe1508b...
+INFO:ml-service.reel.audio:Cache hit for audio: 3dcde15c...
+INFO:ml-service.reel.audio:Cache hit for audio: 0ea817d9...
+INFO:ml-service.reel.audio:Cache hit for audio: 0afc1766...
+INFO:ml-service.reel.audio:Cache hit for audio: 48036132...
+INFO:ml-service.reel.audio:Cache hit for audio: 4fe1508b...
+INFO:ml-service.reel.audio:Cache hit for audio: 3dcde15c...
+INFO:ml-service.reel.audio:Cache hit for audio: 0ea817d9...
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ML service exited with code -1. Check the startup error above.
+At C:\projects\steerproof-master\scripts\start-ml.ps1:19 char:9
++         throw "ML service exited with code $LASTEXITCODE. Check the s ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (ML service exit...up error above.:String) [], RuntimeException
+    + FullyQualifiedErrorId : ML service exited with code -1. Check the startup error above.
+ 
