@@ -244,7 +244,7 @@ export default function PaperPipelinePage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
-          <Link href="/" className="text-xs text-clay hover:text-rust">
+          <Link href="/workspace" className="text-xs text-clay hover:text-rust">
             ← Papers
           </Link>
           <span className="text-xs text-clay">/</span>

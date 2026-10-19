@@ -31,3 +31,18 @@ INFO:     127.0.0.1:64009 - "POST /reel/audio HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64009 - "POST /reel/broll HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64091 - "POST /reel/audio HTTP/1.1" 200 OK
 INFO:     127.0.0.1:60739 - "POST /reel/audio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56146 - "POST /write HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55251 - "POST /write HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:55251 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57371 - "POST /write HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:57371 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55702 - "POST /write HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63798 - "POST /write HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65037 - "POST /write HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54476 - "POST /write HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50062 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57971 - "POST /parse HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57971 - "POST /extract HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57971 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57971 - "POST /verify HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57971 - "GET /health HTTP/1.1" 200 OK

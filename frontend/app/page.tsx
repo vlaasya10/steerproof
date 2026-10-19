@@ -1,323 +1,56 @@
-"use client";
-
-import React, { useEffect, useState, useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { apiRequest, showToast } from "@/lib/api";
-import { useReviewer } from "@/components/ReviewerContext";
-import { DeletePaperButton } from "@/components/DeletePaperButton";
-
-interface PaperSummary {
-  paperId: string;
-  title?: string | null;
-  displayName?: string | null;
-  authors?: string | null;
-  year?: number | null;
-  journal?: string | null;
-  status: string;
-  createdAt?: string;
-  pdfPath?: string | null;
-  originalFilename?: string | null;
-}
-
-/** Title, else the uploaded PDF's filename, else the paper ID. Never a made-up placeholder. */
-function displayTitle(p: PaperSummary): string {
-  if (p.displayName) return p.displayName;
-  if (p.title && p.title.trim()) return p.title.trim();
-  const file = p.originalFilename || p.pdfPath?.split("/").pop();
-  return file || p.paperId;
-}
-
-function shortAuthors(authors?: string | null): string | null {
-  if (!authors) return null;
-  const list = authors.split(",").map((a) => a.trim()).filter(Boolean);
-  return list.length > 3 ? `${list[0]} et al.` : list.join(", ");
-}
-
-function byNewest(a: PaperSummary, b: PaperSummary) {
-  return (b.createdAt ? Date.parse(b.createdAt) : 0) - (a.createdAt ? Date.parse(a.createdAt) : 0);
-}
+import Link from 'next/link';
+import {ArrowRight, ArrowUpRight, BookOpen, Quote, Layers, ShieldCheck} from 'lucide-react';
+import {showcaseCases} from '@/showcase/data';
+import {PublicHeader, PublicFooter, ShowcaseMode} from '@/components/showcase/PublicChrome';
 
 export default function HomePage() {
-  const router = useRouter();
-  const { reviewerName } = useReviewer();
-  const [papers, setPapers] = useState<PaperSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [uploading, setUploading] = useState(false);
-  const [theme, setTheme] = useState("");
-  const [urlInput, setUrlInput] = useState("");
-  const [dragActive, setDragActive] = useState(false);
-  const startTimeRef = useRef<number>(Date.now());
-
-  useEffect(() => {
-    fetchPapers();
-  }, []);
-
-  const fetchPapers = async () => {
-    try {
-      const data = (await apiRequest<PaperSummary[]>("/api/papers")).slice().sort(byNewest);
-      setPapers(data);
-      // Older list payloads carry only the title; fill authors/year/journal from each paper's detail
-      const missing = data.filter((p) => p.authors === undefined).slice(0, 25);
-      if (missing.length > 0) {
-        const details = await Promise.all(
-          missing.map((p) => apiRequest<PaperSummary>(`/api/papers/${p.paperId}`, { silent: true }).catch(() => null))
-        );
-        const byId = new Map(details.filter(Boolean).map((d) => [d!.paperId, d!]));
-        setPapers((prev) =>
-          prev.map((p) => {
-            const d = byId.get(p.paperId);
-            return d ? { ...p, title: p.title ?? d.title, authors: d.authors, year: d.year, journal: d.journal } : p;
-          })
-        );
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleUploadFile = async (file: File) => {
-    setUploading(true);
-    const elapsedSeconds = Math.max(1, Math.round((Date.now() - startTimeRef.current) / 1000));
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      if (theme.trim()) {
-        formData.append("theme", theme.trim());
-      }
-
-      const data = await apiRequest<{ paperId: string }>("/api/papers", { method: "POST", body: formData });
-      showToast(`Paper ${data.paperId} uploaded`, "success");
-
-      await apiRequest(`/api/papers/${data.paperId}/human-events`, {
-        method: "POST",
-        body: JSON.stringify({ kind: "UPLOAD", actor: reviewerName, seconds: elapsedSeconds }),
-        silent: true,
-      }).catch(() => {});
-
-      router.push(`/papers/${data.paperId}`);
-    } catch {
-      // apiRequest already toasted the server error verbatim
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleUrlSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!urlInput.trim()) return;
-    setUploading(true);
-    const elapsedSeconds = Math.max(1, Math.round((Date.now() - startTimeRef.current) / 1000));
-    try {
-      const formData = new FormData();
-      formData.append("url", urlInput.trim());
-      if (theme.trim()) formData.append("theme", theme.trim());
-      const data = await apiRequest<{ paperId: string }>("/api/papers", { method: "POST", body: formData });
-      showToast(`Paper ${data.paperId} registered`, "success");
-
-      await apiRequest(`/api/papers/${data.paperId}/human-events`, {
-        method: "POST",
-        body: JSON.stringify({ kind: "UPLOAD", actor: reviewerName, seconds: elapsedSeconds }),
-        silent: true,
-      }).catch(() => {});
-
-      router.push(`/papers/${data.paperId}`);
-    } catch {
-      // apiRequest already toasted the server error verbatim
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleSamplePaper = () => {
-    // If P-0001 exists in database, go directly to it
-    const existingP1 = papers.find((p) => p.paperId === "P-0001");
-    if (existingP1) {
-      router.push("/papers/P-0001");
-    } else {
-      setUrlInput("https://doi.org/10.1016/j.mcna.2017.08.012");
-      setTheme("Weight regain biology & metabolic adaptation");
-    }
-  };
-
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case "EXPORTED":
-        return "bg-emerald-900/10 text-emerald-800 border-emerald-300";
-      case "AWAITING_CLAIM_REVIEW":
-        return "bg-amber-900/10 text-amber-800 border-amber-300 font-semibold";
-      case "AWAITING_ASSET_REVIEW":
-        return "bg-blue-900/10 text-blue-800 border-blue-300 font-semibold";
-      case "PARSING":
-      case "EXTRACTING":
-      case "VERIFYING":
-      case "WRITING":
-      case "RENDERING":
-        return "bg-purple-900/10 text-purple-800 border-purple-300 animate-pulse";
-      case "FAILED":
-        return "bg-red-900/10 text-red-800 border-red-300";
-      default:
-        return "bg-blush/40 text-ink border-blush";
-    }
-  };
-
-  return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      {/* Hero Header */}
-      <div className="mb-10 text-center max-w-2xl mx-auto">
-        <h1 className="font-serif text-4xl sm:text-5xl font-normal text-ink mb-3 tracking-tight">
-          Clinical metabolic evidence, <span className="italic text-rust">verified</span>.
-        </h1>
-        <p className="text-clay text-sm sm:text-base leading-relaxed">
-          Upload clinical research papers to extract and audit claims with doctor oversight,
-          then turn the approved ones into carousel, static, reel and caption drafts that link back to the paper.
-        </p>
+  const total = showcaseCases.reduce((n, item) => n + item.claims.length, 0);
+  const featured = showcaseCases[0];
+  const poster = featured?.assets.find(a => a.type === 'CAROUSEL')?.media[0];
+  return <><PublicHeader/><main>
+    <section className="max-w-7xl mx-auto px-5 md:px-10 pt-12 md:pt-20 pb-14 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+      <div><p className="text-sm text-rust flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-rust"/> The evidence comes with it</p>
+        <h1 className="font-serif text-6xl sm:text-7xl xl:text-8xl leading-[0.98] tracking-tight mt-6">Explore SteerProof<br/><em className="font-normal text-rust">in action.</em></h1>
+        <p className="text-lg text-clay leading-relaxed mt-7 max-w-xl">From scientific research to evidence-linked, reviewable Instagram content. Open a project. Follow a claim. See exactly where the words came from.</p>
+        <div className="mt-8 flex flex-wrap items-center gap-5"><a href="#examples" className="bg-rust text-cream px-6 py-3.5 rounded-full text-sm inline-flex items-center gap-5 hover:bg-maroon transition-colors">Explore the examples <ArrowRight size={17}/></a><span className="text-xs text-clay">No login. No upload. A real paper trail.</span></div>
+        <div className="mt-10 flex gap-8 border-t border-blush pt-6"><div><p className="font-serif text-4xl">{showcaseCases.length}</p><p className="text-xs text-clay mt-1">research projects</p></div><div><p className="font-serif text-4xl">{total}</p><p className="text-xs text-clay mt-1">source-linked claims</p></div><div><p className="font-serif text-4xl">2</p><p className="text-xs text-clay mt-1">review stages</p></div></div>
       </div>
-
-      {/* Upload Box */}
-      <div className="bg-softPaper border border-blush rounded-2xl p-6 sm:p-8 mb-12 shadow-sm">
-        <div className="flex flex-col md:flex-row gap-6 items-start">
-          {/* Drag & Drop Area */}
-          <div
-            onDragOver={(e) => {
-              e.preventDefault();
-              setDragActive(true);
-            }}
-            onDragLeave={() => setDragActive(false)}
-            onDrop={(e) => {
-              e.preventDefault();
-              setDragActive(false);
-              if (e.dataTransfer.files?.[0]) {
-                handleUploadFile(e.dataTransfer.files[0]);
-              }
-            }}
-            className={`flex-1 border-2 border-dashed rounded-xl p-8 text-center transition-all cursor-pointer w-full ${
-              dragActive ? "border-rust bg-cream" : "border-blush hover:border-clay bg-cream/50"
-            }`}
-            onClick={() => {
-              const fileInput = document.getElementById("file-upload") as HTMLInputElement;
-              fileInput?.click();
-            }}
-          >
-            <input
-              id="file-upload"
-              type="file"
-              accept=".pdf,application/pdf"
-              className="hidden"
-              onChange={(e) => {
-                if (e.target.files?.[0]) {
-                  handleUploadFile(e.target.files[0]);
-                }
-              }}
-            />
-            <div className="flex flex-col items-center">
-              <span className="text-3xl mb-2 text-rust">📄</span>
-              <p className="text-sm font-medium text-ink mb-1">
-                {uploading ? "Processing PDF..." : "Drag & drop clinical PDF paper here"}
-              </p>
-              <p className="text-xs text-clay">or click to browse your computer</p>
-            </div>
-          </div>
-
-          {/* Form options & URL input */}
-          <div className="w-full md:w-80 flex flex-col gap-4">
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-clay font-medium mb-1">
-                Optional Editorial Theme
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Weight regain biology"
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-                className="w-full px-3 py-2 text-xs border border-blush rounded-lg bg-cream text-ink focus:outline-none focus:border-rust"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-clay font-medium mb-1">
-                Or paste PDF URL
-              </label>
-              <form onSubmit={handleUrlSubmit} className="flex gap-2">
-                <input
-                  type="url"
-                  placeholder="https://..."
-                  value={urlInput}
-                  onChange={(e) => setUrlInput(e.target.value)}
-                  className="flex-1 px-3 py-2 text-xs border border-blush rounded-lg bg-cream text-ink focus:outline-none focus:border-rust"
-                />
-                <button
-                  type="submit"
-                  disabled={uploading || !urlInput.trim()}
-                  className="px-3 py-2 text-xs bg-rust text-cream font-medium rounded-lg hover:bg-rust/90 disabled:opacity-50 transition-colors"
-                >
-                  Fetch
-                </button>
-              </form>
-            </div>
-
-            <div className="pt-2 border-t border-blush">
-              <button
-                type="button"
-                onClick={handleSamplePaper}
-                className="w-full py-2 px-3 text-xs text-rust font-medium bg-cream border border-rust/30 rounded-lg hover:bg-blush/30 transition-colors text-center"
-              >
-                Sample: Hall & Kahan (2018)
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="relative bg-blush/30 rounded-[2rem] p-7 sm:p-10 min-h-[420px] flex items-center justify-center">
+        {poster && <Link href={`/showcase/${featured.slug}`} aria-label={`Explore ${featured.title}`} className="block max-w-[260px] w-full rotate-[-5deg] shadow-xl rounded-lg overflow-hidden border border-blush"><img src={poster.url} width={1080} height={1350} alt="A generated Steer carousel from the featured research project" className="w-full h-auto" fetchPriority="high"/></Link>}
+        <div className="absolute right-3 sm:right-0 top-12 bg-softPaper border border-blush rounded-xl px-4 py-3 shadow-sm max-w-[200px]"><Quote size={20} className="text-rust mb-2"/><p className="text-sm font-medium">A post you can trace.</p><p className="text-xs text-clay mt-1">Copy → claim → passage → page</p></div>
+        <p className="absolute left-6 bottom-5 font-hand text-2xl text-rust rotate-[-4deg]">the source stays attached ↗</p>
       </div>
-
-      {/* Papers List */}
-      <div>
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="font-serif text-2xl text-ink font-normal">Active Papers in SteerProof</h2>
-          <span className="text-xs text-clay">{papers.length} paper{papers.length !== 1 ? "s" : ""}</span>
-        </div>
-
-        {loading ? (
-          <div className="p-8 text-center text-clay text-sm">Loading papers...</div>
-        ) : papers.length === 0 ? (
-          <div className="bg-softPaper border border-blush rounded-xl p-8 text-center text-clay text-sm">
-            No papers registered yet. Upload your first clinical study above.
+    </section>
+    <div className="max-w-7xl mx-auto px-5 md:px-10"><ShowcaseMode/></div>
+    <section id="examples" className="max-w-7xl mx-auto px-5 md:px-10 py-16 scroll-mt-24">
+      <div className="flex items-end justify-between gap-5 mb-8"><div><p className="text-sm text-rust mb-2">The case studies</p><h2 className="font-serif text-4xl md:text-5xl">Different questions. The same care.</h2></div><span className="hidden sm:block text-xs text-clay">{showcaseCases.length} genuine papers · read-only snapshots</span></div>
+      <div className="grid md:grid-cols-3 gap-6">{showcaseCases.map((item, index) => {
+        const image = item.assets.find(a => a.type === 'STATIC')?.media[0];
+        const matched = item.claims.filter(c => c.quoteScore >= 90 && c.reproducedQuoteScore >= 90).length;
+        return <article key={item.slug} data-testid="case-card" className="border border-blush rounded-2xl overflow-hidden bg-softPaper flex flex-col">
+          <Link href={`/showcase/${item.slug}`} className="block border-b border-blush bg-cream relative h-64 overflow-hidden group" aria-label={`Preview ${item.title}`}>
+            {image && <img src={image.url} alt={`Generated static post for ${item.topic}`} width={1080} height={1350} loading="lazy" className="h-full w-full object-cover object-[50%_40%] transition-transform duration-500 group-hover:scale-[1.03]"/>}
+            <span className="absolute top-4 left-4 bg-softPaper border border-blush rounded-full px-3 py-1 text-xs text-rust">0{index + 1} / {item.topic}</span>
+          </Link>
+          <div className="p-6 flex flex-col flex-1"><p className="text-xs text-clay">{item.paper.journal} · {item.paper.year}</p><h3 className="font-serif text-3xl leading-tight mt-3"><Link href={`/showcase/${item.slug}`}>{item.title}</Link></h3>
+            <p className="text-xs text-ink/70 leading-relaxed mt-3 line-clamp-2">{item.paper.title}</p>
+            <p className="text-sm text-clay leading-relaxed mt-4 line-clamp-4">{item.summary}</p>
+            <div className="mt-5 space-y-2 text-xs"><p className="flex items-center gap-2"><Quote size={14} className="text-rust"/>{matched}/{item.claims.length} quotations match their passages</p><p className="flex items-center gap-2 text-clay"><ShieldCheck size={14}/>{item.review.kind === 'demonstration' ? 'Demonstration review recorded' : 'Workspace approvals recorded; credentials unverified'}</p></div>
+            <div className="flex flex-wrap gap-1.5 mt-5 mb-6">{item.assets.filter(a => a.type === 'CAPTION' || a.media.length).map(a => <span key={a.assetId} className="text-[11px] rounded-full border border-blush px-2 py-1 text-clay">{({CAROUSEL:'Carousel',STATIC:'Static',CAPTION:'Caption',REEL:'Reel'} as Record<string,string>)[a.type]}</span>)}</div>
+            <Link href={`/showcase/${item.slug}`} className="mt-auto pt-4 border-t border-blush flex items-center justify-between text-sm text-rust">Explore case study <ArrowUpRight size={18}/></Link>
           </div>
-        ) : (
-          <div className="grid gap-3">
-            {papers.map((p) => (
-              <div
-                key={p.paperId}
-                data-testid="paper-row"
-                className="bg-softPaper hover:bg-cream border border-blush hover:border-clay rounded-xl p-4 sm:p-5 transition-all flex flex-col sm:flex-row justify-between sm:items-center gap-3 group"
-              >
-                <Link href={`/papers/${p.paperId}`} className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-mono text-clay">{p.paperId}</span>
-                    <span className={`text-[11px] px-2 py-0.5 rounded-full border ${getStatusBadge(p.status)}`}>
-                      {p.status.replace(/_/g, " ")}
-                    </span>
-                  </div>
-                  <h3 className="font-sans font-medium text-ink group-hover:text-rust transition-colors text-base line-clamp-1">
-                    {displayTitle(p)}
-                  </h3>
-                  <p className="text-xs text-clay mt-1">
-                    {[shortAuthors(p.authors), p.year, p.journal].filter(Boolean).join(" · ")}
-                  </p>
-                </Link>
-
-                <div className="flex items-center gap-3">
-                  <Link href={`/papers/${p.paperId}`} className="text-xs text-rust font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                    View Pipeline →
-                  </Link>
-                  <DeletePaperButton paperId={p.paperId} paperName={displayTitle(p)} processing={["PARSING", "EXTRACTING", "VERIFYING", "WRITING", "RENDERING"].includes(p.status)} onDeleted={() => setPapers((previous) => previous.filter((paper) => paper.paperId !== p.paperId))} />
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+        </article>;
+      })}</div>
+    </section>
+    <section id="how-it-works" className="border-y border-blush bg-softPaper scroll-mt-24"><div className="max-w-7xl mx-auto px-5 md:px-10 py-16">
+      <p className="text-sm text-rust">Follow the paper trail</p><h2 className="font-serif text-4xl md:text-5xl mt-3 max-w-2xl">The interesting part isn’t just the post.<br/><em className="text-rust">It’s what sits behind it.</em></h2>
+      <div className="grid md:grid-cols-4 gap-8 mt-10">{[
+        [BookOpen,'Start with the paper','Original source, page-level passages and document coordinates.'],
+        [Quote,'Inspect the evidence','Recorded quotation, number and meaning checks, with limitations intact.'],
+        [ShieldCheck,'Understand the reviews','See recorded decisions, policy flags and what has not been clinically verified.'],
+        [Layers,'Explore the content','Follow generated copy back to claims; play reels and inspect sample exports.'],
+      ].map(([Icon,title,copy]) => {const Glyph=Icon as typeof BookOpen;return <div key={String(title)}><Glyph className="text-rust" size={23}/><h3 className="font-medium mt-4 text-sm">{String(title)}</h3><p className="text-sm text-clay leading-relaxed mt-2">{String(copy)}</p></div>;})}</div>
+      <Link href="/showcase/credits" className="inline-flex items-center gap-2 mt-9 text-sm text-rust underline underline-offset-4">Read the methodology and reuse notes <ArrowUpRight size={15}/></Link>
+    </div></section>
+  </main><PublicFooter/></>;
 }

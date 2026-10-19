@@ -405,3 +405,55 @@ INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/m
 WARNING:app.write.writer:Writer output failed initial validation with 2 errors: ["Caption para 1: kind 'claim' contains the brand line 'willpower'. Brand lines are kind 'brand' and must be their own block.", "Caption para 2: kind 'claim' contains the brand line 'doctor-led'. Brand lines are kind 'brand' and must be their own block."]. Retrying once...
 INFO:google_genai.models:AFC is enabled with max remote calls: 10.
 INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:docling.datamodel.document:detected formats: [<InputFormat.PDF: 'pdf'>]
+INFO:docling.document_converter:Going to convert document batch...
+INFO:docling.document_converter:Initializing pipeline for StandardPdfPipeline with options hash 5f4950ded83d09b0a3b1978d700e85f3
+INFO:docling.models.stages.ocr.auto_ocr_model:rapidocr cannot be used because onnxruntime is not installed.
+INFO:docling.models.stages.ocr.auto_ocr_model:easyocr cannot be used because it is not installed.
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+INFO:docling.models.stages.ocr.auto_ocr_model:Auto OCR model selected rapidocr with torch.
+INFO:docling.models.inference_engines.object_detection.transformers_engine:Initializing Transformers object-detection engine
+INFO:docling.models.inference_engines.common.hf_vision_base:Downloading object-detection model from HuggingFace: docling-project/docling-layout-heron@main
+INFO:docling.models.utils.hf_model_download:Fetching model docling-project/docling-layout-heron (revision: main)...
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-layout-heron/revision/main "HTTP/1.1 200 OK"
+INFO:docling.models.utils.hf_model_download:Model docling-project/docling-layout-heron already cached at C:\projects\steerproof-master\.cache\huggingface\hub\models--docling-project--docling-layout-heron\snapshots\8f39ad3c0b4c58e9c2d2c84a38465abf757272d8
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+Loading weights:   0%|          | 0/770 [00:00<?, ?it/s]Loading weights:  17%|#7        | 132/770 [00:00<00:00, 1317.34it/s]Loading weights:  34%|###4      | 264/770 [00:00<00:00, 661.07it/s] Loading weights:  45%|####5     | 348/770 [00:00<00:00, 574.42it/s]Loading weights:  54%|#####3    | 415/770 [00:00<00:00, 559.97it/s]Loading weights:  67%|######7   | 519/770 [00:00<00:00, 674.42it/s]Loading weights: 100%|##########| 770/770 [00:00<00:00, 957.04it/s]
+INFO:docling.models.inference_engines.object_detection.transformers_engine:Transformers engine ready (device=cpu, dtype=torch.float32)
+INFO:docling.models.utils.hf_model_download:Fetching model docling-project/docling-models (revision: v2.3.0)...
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/docling-project/docling-models/revision/v2.3.0 "HTTP/1.1 200 OK"
+INFO:docling.models.utils.hf_model_download:Model docling-project/docling-models already cached at C:\projects\steerproof-master\.cache\huggingface\hub\models--docling-project--docling-models\snapshots\fc0f2d45e2218ea24bce5045f58a389aed16dc23
+INFO:docling.utils.accelerator_utils:Accelerator device: 'cpu'
+INFO:docling.pipeline.base_pipeline:Processing document P-0004.pdf
+[INFO] 2026-10-19 17:50:03,948 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-19 17:50:03,953 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-19 17:50:03,982 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_det_small.pth
+[INFO] 2026-10-19 17:50:03,983 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_det_small.pth
+[INFO] 2026-10-19 17:50:08,857 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-19 17:50:08,860 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-19 17:50:08,866 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-10-19 17:50:08,866 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\ch_ppocr_mobile_v2.0_cls_mobile.pth
+[INFO] 2026-10-19 17:50:09,269 [RapidOCR] base.py:23: Using engine_name: torch
+[INFO] 2026-10-19 17:50:09,271 [RapidOCR] device_config.py:57: Using CPU device
+[INFO] 2026-10-19 17:50:09,312 [RapidOCR] download_file.py:60: File exists and is valid: C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_rec_small.pth
+[INFO] 2026-10-19 17:50:09,313 [RapidOCR] main.py:50: Using C:\projects\steerproof-master\ml-service\.venv\Lib\site-packages\rapidocr\models\PP-OCRv6_rec_small.pth
+INFO:docling.document_converter:Finished converting document P-0004.pdf in 58.07 sec.
+INFO:httpx:HTTP Request: GET https://api.crossref.org/works/10.1186/s12986-016-0153-3 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&term=10.1186%2Fs12986-016-0153-3%5Bdoi%5D "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=27990172 "HTTP/1.1 200 OK"
+INFO:app.parse.meta:paper meta extracted: {'title': 'Nutritional modulation of endogenous glucagon-like peptide-1 secretion: a review', 'authors': 'Alexandra M. Bodnaruc', 'year': 2016, 'journal': 'Nutr Metab (Lond)', 'doi': '10.1186/s12986-016-0153-3'} (sources: {'title': 'pdf:title-passage', 'authors': 'pdf:metadata', 'doi': 'pdf:text', 'year': 'crossref:issued', 'journal': 'pubmed:esummary'})
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+ML service exited with code -1. Check the startup error above.
+At C:\projects\steerproof-master\scripts\start-ml.ps1:19 char:9
++         throw "ML service exited with code $LASTEXITCODE. Check the s ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (ML service exit...up error above.:String) [], RuntimeException
+    + FullyQualifiedErrorId : ML service exited with code -1. Check the startup error above.
+ 

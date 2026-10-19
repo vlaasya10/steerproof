@@ -3,7 +3,7 @@
 //
 //   BASE_URL=http://localhost:3000 API_URL=http://localhost:8080 PAPER_ID=P-0001 node scripts/ui_smoke_test.js
 // SMOKE_DISABLE_CORS=1 is only for a frontend on another port: the backend's CORS allows :3000.
-const { chromium } = require("/home/yjr/steerproof/render-service/node_modules/playwright");
+const { chromium } = require("../render-service/node_modules/playwright");
 const path = require("path");
 const fs = require("fs");
 
@@ -58,13 +58,13 @@ async function main() {
   try {
     // 1. Home
     console.log("\n[1] Home");
-    await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle" });
+    await page.goto(`${BASE_URL}/workspace`, { waitUntil: "networkidle" });
     await page.waitForSelector('[data-testid="paper-row"]', { timeout: 15000 });
     const rows = await page.$$eval('[data-testid="paper-row"]', (els) =>
-      els.map((e) => ({ href: e.getAttribute("href"), text: e.textContent }))
+      els.map((e) => ({ href: e.querySelector('a[href]')?.getAttribute("href"), text: e.textContent }))
     );
     check(rows.length > 0, "papers listed", `${rows.length} row(s)`);
-    check(rows.every((r) => r.href && !r.href.endsWith("/undefined")), "paper links resolve to real IDs");
+    check(rows.every((r) => /^\/papers\/P-\d+$/.test(r.href || "")), "paper links resolve to real IDs");
     check(!rows.some((r) => r.text.includes("Clinical Research Paper")), "no placeholder titles");
     await shot(page, "home");
 

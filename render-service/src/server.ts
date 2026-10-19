@@ -94,7 +94,8 @@ app.post('/reel', async (req, res) => {
     });
 
     const isDraft = draft !== undefined ? Boolean(draft) : true;
-    const finalMusic = musicSrc || `${baseUrl}/assets/music/calm-1.mp3`;
+    // Explicit null allows rights-cleared public previews without unverified music.
+    const finalMusic = musicSrc === null ? undefined : musicSrc || `${baseUrl}/assets/music/calm-1.mp3`;
 
     const { renderReel } = await import('./reel.js');
     const result = await renderReel(

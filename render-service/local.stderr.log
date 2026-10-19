@@ -1,0 +1,142 @@
+Could not extract frame from compositor Error: Compositor error: No frame found at position 146000 for source C:\Users\vlaas\AppData\Local\Temp\remotion-v4.0.536-assetsxbsp3llgu9\remotion-assets-dir\22044622618705034.mp4 (original source = http://localhost:8002/files/broll/pixabay-272166.mp4). See https://remotion.dev/docs/troubleshooting/no-frame-found-at-position for troubleshooting help.
+   0: std::backtrace::Backtrace::force_capture
+   1: <remotion::errors::ErrorWithBacktrace as core::convert::From<std::io::error::Error>>::from
+   2: remotion::opened_video_manager::OpenedVideoManager::get_frame_id
+   3: std::sys::backtrace::__rust_begin_short_backtrace
+   4: core::ops::function::FnOnce::call_once{{vtable.shim}}
+   5: std::sys::pal::windows::thread::Thread::new::thread_start
+   6: <unknown>
+   7: <unknown>
+
+    at onMessage (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:112:47)
+    at processInput (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:119:9)
+    at onDataInner (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:168:16)
+    at Socket.onData (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:177:20)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+[http://localhost:3001/proxy?src=http%3A%2F%2Flocalhost%3A8002%2Ffiles%2Fbroll%2Fpixabay-272166.mp4&time=4.866666666666666&transparent=false&toneMapped=true] Failed to load resource: the server responded with a status of 500 (Internal Server Error)
+Remotion renderMedia failed for P-0003-showcase: SymbolicateableError: Compositor error: No frame found at position 146000 for source C:\Users\vlaas\AppData\Local\Temp\remotion-v4.0.536-assetsxbsp3llgu9\remotion-assets-dir\22044622618705034.mp4 (original source = http://localhost:8002/files/broll/pixabay-272166.mp4). See https://remotion.dev/docs/troubleshooting/no-frame-found-at-position for troubleshooting help.
+   0: std::backtrace::Backtrace::force_capture
+   1: <remotion::errors::ErrorWithBacktrace as core::convert::From<std::io::error::Error>>::from
+   2: remotion::opened_video_manager::OpenedVideoManager::get_frame_id
+   3: std::sys::backtrace::__rust_begin_short_backtrace
+   4: core::ops::function::FnOnce::call_once{{vtable.shim}}
+   5: std::sys::pal::windows::thread::Thread::new::thread_start
+   6: <unknown>
+   7: <unknown>
+
+    at onMessage (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:112:47)
+    at processInput (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:119:9)
+    at onDataInner (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:168:16)
+    at Socket.onData (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:177:20)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+    at onMessage (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:112:47)
+    at processInput (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:119:9)
+    at onDataInner (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:168:16)
+    at Socket.onData (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:177:20)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+    at execute (http://localhost:3001/bundle.js:37327:21) {
+  stackFrame: [
+    {
+      columnNumber: 20,
+      fileName: 'http://localhost:3001/bundle.js',
+      functionName: 'execute',
+      lineNumber: 37326
+    }
+  ],
+  delayRenderCall: null,
+  frame: 146,
+  chunk: null
+}
+Error in /reel: SymbolicateableError: Compositor error: No frame found at position 146000 for source C:\Users\vlaas\AppData\Local\Temp\remotion-v4.0.536-assetsxbsp3llgu9\remotion-assets-dir\22044622618705034.mp4 (original source = http://localhost:8002/files/broll/pixabay-272166.mp4). See https://remotion.dev/docs/troubleshooting/no-frame-found-at-position for troubleshooting help.
+   0: std::backtrace::Backtrace::force_capture
+   1: <remotion::errors::ErrorWithBacktrace as core::convert::From<std::io::error::Error>>::from
+   2: remotion::opened_video_manager::OpenedVideoManager::get_frame_id
+   3: std::sys::backtrace::__rust_begin_short_backtrace
+   4: core::ops::function::FnOnce::call_once{{vtable.shim}}
+   5: std::sys::pal::windows::thread::Thread::new::thread_start
+   6: <unknown>
+   7: <unknown>
+
+    at onMessage (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:112:47)
+    at processInput (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:119:9)
+    at onDataInner (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:168:16)
+    at Socket.onData (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:177:20)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+    at onMessage (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:112:47)
+    at processInput (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:119:9)
+    at onDataInner (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:168:16)
+    at Socket.onData (C:\projects\steerproof-master\render-service\node_modules\@remotion\streaming\dist\make-streamer.js:177:20)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+    at execute (http://localhost:3001/bundle.js:37327:21) {
+  stackFrame: [
+    {
+      columnNumber: 20,
+      fileName: 'http://localhost:3001/bundle.js',
+      functionName: 'execute',
+      lineNumber: 37326
+    }
+  ],
+  delayRenderCall: null,
+  frame: 146,
+  chunk: null
+}
+Could not extract frame from compositor Error: Request closed
+    at C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\offthread-video-server.js:113:32
+    at new Promise (<anonymous>)
+    at C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\offthread-video-server.js:111:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Could not extract frame from compositor Error: Compositor exited with signal SIGKILL
+    at ChildProcess.<anonymous> (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:148:19)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
+Could not extract frame from compositor Error: Compositor exited with signal SIGKILL
+    at ChildProcess.<anonymous> (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:148:19)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
+Could not extract frame from compositor Error: Compositor exited with signal SIGKILL
+    at ChildProcess.<anonymous> (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:148:19)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
+Could not extract frame from compositor Error: Compositor exited with signal SIGKILL
+    at ChildProcess.<anonymous> (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:148:19)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    at Process.callbackTrampoline (node:internal/async_hooks:130:17)
+Could not extract frame from compositor Error: Compositor exited with signal SIGKILL
+    at ChildProcess.<anonymous> (C:\projects\steerproof-master\render-service\node_modules\@remotion\renderer\dist\compositor\compositor.js:148:19)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+    at Process.callbackTrampoline (node:internal/async_hooks:130:17)

@@ -13,9 +13,11 @@
 
 For Vercel frontend and Render backend setup, follow [the deployment guide](docs/DEPLOYMENT.md). Cloud hosting and persistent storage may cost money; no cloud resources are created by this repository.
 
+The root website is now a public, read-only showcase with three genuine local research-to-content runs. Source evidence and media are bundled with the frontend, so exploration works without Render or the preparation laptop. Reviews are explicitly disclosed as demonstrations, not clinician endorsement. The authenticated application lives at `/workspace`. See [showcase preparation, verification and release steps](docs/SHOWCASE.md).
+
 > **A dual-gated, evidence-traceable clinical publishing system that turns dense metabolic health research papers into on-brand Instagram Carousels, Static Posts, AI-voiced Video Reels, and Captions for [Steer](https://steerclub.com).**
 >
-> *Every single claim on every post links directly to the exact paragraph, page, and coordinate bounding-box in the source clinical trial. Zero content ever reaches the public without explicit, signed clinical review.*
+> *Scientific copy is linked to extracted claims, source passages, pages and Docling coordinates. Backend approval gates control private publishing exports. The public educational showcase discloses demonstration reviews separately from clinical sign-off.*
 
 ---
 

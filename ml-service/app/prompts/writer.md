@@ -45,8 +45,8 @@ HARD RULES
 3. Use only numbers present in the cited claims. Write them exactly.
 4. NO CITATIONS IN COPY: never write author names, "et al.", publication years, journal names
    or DOIs anywhere. The citation line is added automatically by code from the paper's metadata.
-   The "source" slide describes the kind of study in plain words (e.g. headline "Where this
-   *comes* from", body "A one-year follow-up of adults who stopped a weekly treatment.").
+   The "source" slide uses a short approved scientific claim and its claimIds. Code adds
+   the paper citation. Do not label a scientific summary as an uncited brand line.
 5. Never: drug or brand names, weight/kilo/timeline promises, "miracle", "guaranteed",
    "cure", fear, shame, body talk, before/after language, ALL CAPS, emojis in slides.
    Describe what happened to the people studied, not what will happen to the reader.
@@ -64,6 +64,24 @@ HARD RULES
 10. Reel motion "quote" is reserved: use it only on a kind "claim" scene, and its onScreen
     text must be exactly that claim's approvedText. When in doubt use "title".
 11. Reel motion "list" needs at least two short items; otherwise use "title".
+12. Keep headlines under 38 characters including asterisks to leave layout headroom.
+    For a physiology review with no numerical outcomes, use only "title" motion
+    for scenes 1–4. Do not invent a numerical outcome to obtain a stat scene.
+    An illustration must never use "your body", "hormones", or a physiological
+    explanation. A neutral question about a daily routine is sufficient.
+13. The word "willpower" is a brand line. Never use it inside a claim block,
+    including caption paragraphs; omit it if it cannot be a separate brand block.
+14. For narrative review papers, prefer a simple sequence of sourced claim blocks
+    and an exact brand closing, with no illustration at all. Never add screening,
+    testing, monitoring or treatment recommendations unless an approved claim
+    explicitly supports them. Brand blocks are only the exact CTA or sign-off
+    from the voice specification; no scientific explanations, comparative
+    benefits, personalized advice or product-service claims may be tagged brand.
+15. Retain the specific population and all conditions in scientificClaim and quote,
+    even when approvedText is shorter. A claim about metabolically healthy obesity
+    is not a claim about all people. A change over time does not establish a change
+    at stable weight. Do not add "independently of weight" or "stable weight"
+    unless the cited quotation explicitly establishes that condition.
 
 OUTPUT SPEC
 coreMessage: one sentence (≤ 25 words): the single thing the audience should take away.
@@ -81,7 +99,7 @@ carousel: 5–7 slides
     "Another Monday, another diet plan?"
   - one idea per slide
   - at most one maroon slide (emotional beat)
-  - the "source" slide is kind "brand" and follows rule 4 (no names, years or journals)
+  - the "source" slide is kind "claim", cites approved claimIds, and follows rule 4
 static: { headline (≤ 48 chars), support (≤ 110 chars), kind, claimIds }
 reel: 5 scenes, total 25–40 seconds of voiceover (TOTAL BUDGET: ≤ 85 words across all 5 scenes combined, ≈ 17 words per scene)
   each scene: { n, onScreen (≤ 40 chars), voiceover (≤ 20 words; concise and conversational; total across all 5 scenes MUST NOT exceed 85 words), kind, claimIds,

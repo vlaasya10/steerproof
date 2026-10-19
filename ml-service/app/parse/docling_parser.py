@@ -1,11 +1,31 @@
 import json
 import logging
 from pathlib import Path
-from docling.document_converter import DocumentConverter
 
 from app.schemas import Passage
+from docling.document_converter import DocumentConverter
 
 logger = logging.getLogger(__name__)
+PARSER_VERSION = "docling-v2-region-spans"
+
+
+def provenance_fragments(item, text: str):
+    """Never attach a multi-page item's entire text to its first provenance box."""
+    provenance = item.prov
+    if len(provenance) == 1:
+        return [(provenance[0], text)]
+    fragments = []
+    for prov in provenance:
+        span = getattr(prov, "charspan", None)
+        if not span or len(span) != 2 or not (0 <= span[0] < span[1] <= len(text)):
+            raise ValueError(
+                "Docling item has multiple source regions without usable character spans; cannot assign evidence to a page safely"
+            )
+        fragment = text[span[0] : span[1]].strip()
+        if fragment:
+            fragments.append((prov, fragment))
+    return fragments
+
 
 def normalize_label(label: str) -> str:
     lbl = label.lower()
@@ -19,7 +39,10 @@ def normalize_label(label: str) -> str:
         return "title"
     return "paragraph"
 
-def split_large_passages_and_merge(raw_passages: list[dict], pdf_full_path: str, paper_id: str) -> list[Passage]:
+
+def split_large_passages_and_merge(
+    raw_passages: list[dict], pdf_full_path: str, paper_id: str
+) -> list[Passage]:
     """
     1. Splits any passage whose bbox height > 45% of page height (unless single table).
     2. Merges only consecutive paragraphs on the same page and section when EACH is under 200 chars.
@@ -37,9 +60,13 @@ def split_large_passages_and_merge(raw_passages: list[dict], pdf_full_path: str,
             text = p["text"]
 
             # Split by double newlines or sentences into ~400 char segments
-            paras = [para.strip() for para in text.split("\n\n") if len(para.strip()) > 10]
+            paras = [
+                para.strip() for para in text.split("\n\n") if len(para.strip()) > 10
+            ]
             if len(paras) <= 1:
-                sentences = [s.strip() + "." for s in text.split(". ") if len(s.strip()) > 5]
+                sentences = [
+                    s.strip() + "." for s in text.split(". ") if len(s.strip()) > 5
+                ]
                 paras = []
                 cur_para = []
                 cur_len = 0
@@ -55,16 +82,18 @@ def split_large_passages_and_merge(raw_passages: list[dict], pdf_full_path: str,
                     paras.append(" ".join(cur_para))
 
             for para in paras:
-                split_list.append({
-                    "section": p["section"],
-                    "kind": p["kind"],
-                    "page": p["page"],
-                    # A text split retains its source Docling box; never invent a smaller region.
-                    "bbox": dict(bbox),
-                    "page_width": p["page_width"],
-                    "page_height": p["page_height"],
-                    "text": para
-                })
+                split_list.append(
+                    {
+                        "section": p["section"],
+                        "kind": p["kind"],
+                        "page": p["page"],
+                        # A text split retains its source Docling box; never invent a smaller region.
+                        "bbox": dict(bbox),
+                        "page_width": p["page_width"],
+                        "page_height": p["page_height"],
+                        "text": para,
+                    }
+                )
         else:
             split_list.append(p)
 
@@ -76,26 +105,31 @@ def split_large_passages_and_merge(raw_passages: list[dict], pdf_full_path: str,
         curr = split_list[i]
         if i + 1 < len(split_list):
             nxt = split_list[i + 1]
-            if (curr["page"] == nxt["page"]
+            if (
+                curr["page"] == nxt["page"]
                 and curr["section"] == nxt["section"]
-                and curr["kind"] == "paragraph" and nxt["kind"] == "paragraph"
-                and len(curr["text"].strip()) < 200 and len(nxt["text"].strip()) < 200):
-
+                and curr["kind"] == "paragraph"
+                and nxt["kind"] == "paragraph"
+                and len(curr["text"].strip()) < 200
+                and len(nxt["text"].strip()) < 200
+            ):
                 merged_bbox = {
                     "l": min(curr["bbox"]["l"], nxt["bbox"]["l"]),
                     "t": min(curr["bbox"]["t"], nxt["bbox"]["t"]),
                     "r": max(curr["bbox"]["r"], nxt["bbox"]["r"]),
                     "b": max(curr["bbox"]["b"], nxt["bbox"]["b"]),
                 }
-                merged_items.append({
-                    "section": curr["section"],
-                    "kind": "paragraph",
-                    "page": curr["page"],
-                    "bbox": merged_bbox,
-                    "page_width": curr["page_width"],
-                    "page_height": curr["page_height"],
-                    "text": curr["text"].strip() + "\n\n" + nxt["text"].strip()
-                })
+                merged_items.append(
+                    {
+                        "section": curr["section"],
+                        "kind": "paragraph",
+                        "page": curr["page"],
+                        "bbox": merged_bbox,
+                        "page_width": curr["page_width"],
+                        "page_height": curr["page_height"],
+                        "text": curr["text"].strip() + "\n\n" + nxt["text"].strip(),
+                    }
+                )
                 i += 2
                 continue
 
@@ -103,23 +137,26 @@ def split_large_passages_and_merge(raw_passages: list[dict], pdf_full_path: str,
         i += 1
 
     # Build final Passage objects with clean ord and ID
-    paper_num = paper_id[2:] if paper_id.startswith("P-") else paper_id
+    paper_num = paper_id.removeprefix("P-")
     passages: list[Passage] = []
     for ord_idx, item in enumerate(merged_items, start=1):
         pid = f"E-{paper_num}-{ord_idx:04d}"
-        passages.append(Passage(
-            id=pid,
-            section=item["section"],
-            kind=item["kind"],
-            page=item["page"],
-            bbox=item["bbox"],
-            page_width=item["page_width"],
-            page_height=item["page_height"],
-            text=item["text"].strip(),
-            ord=ord_idx
-        ))
+        passages.append(
+            Passage(
+                id=pid,
+                section=item["section"],
+                kind=item["kind"],
+                page=item["page"],
+                bbox=item["bbox"],
+                page_width=item["page_width"],
+                page_height=item["page_height"],
+                text=item["text"].strip(),
+                ord=ord_idx,
+            )
+        )
 
     return passages
+
 
 def parse_pdf(pdf_full_path: str, paper_id: str, storage_root: Path) -> list[Passage]:
     # Check cache first
@@ -128,7 +165,10 @@ def parse_pdf(pdf_full_path: str, paper_id: str, storage_root: Path) -> list[Pas
     if cache_path.exists():
         try:
             cached_data = json.loads(cache_path.read_text(encoding="utf-8"))
-            if isinstance(cached_data, dict) and cached_data.get("parser") == "docling-v1":
+            if (
+                isinstance(cached_data, dict)
+                and cached_data.get("parser") == PARSER_VERSION
+            ):
                 return [Passage(**p) for p in cached_data["passages"]]
         except (ValueError, KeyError, OSError) as exc:
             logger.warning("Ignoring invalid parse cache for %s: %s", paper_id, exc)
@@ -146,46 +186,68 @@ def parse_pdf(pdf_full_path: str, paper_id: str, storage_root: Path) -> list[Pas
             if "section_header" in label or label.endswith("title"):
                 section = getattr(item, "text", None)
 
-            text = item.export_to_markdown(doc=doc) if "table" in label else getattr(item, "text", "")
+            text = (
+                item.export_to_markdown(doc=doc)
+                if "table" in label
+                else getattr(item, "text", "")
+            )
             if not text or len(text.strip()) < 20 or not getattr(item, "prov", None):
                 continue
 
-            prov = item.prov[0]
-            page_no = prov.page_no
-            page = doc.pages[page_no]
-
-            raw_bbox = prov.bbox
-            if hasattr(raw_bbox, "to_top_left_origin"):
-                bbox = raw_bbox.to_top_left_origin(page_height=page.size.height)
-                bbox_dict = {"l": float(bbox.l), "t": float(bbox.t), "r": float(bbox.r), "b": float(bbox.b)}
-            else:
-                bbox_dict = {"l": float(raw_bbox.l), "t": float(raw_bbox.t), "r": float(raw_bbox.r), "b": float(raw_bbox.b)}
-
-            raw_passages.append({
-                "section": section,
-                "kind": normalize_label(label),
-                "page": page_no,
-                "bbox": bbox_dict,
-                "page_width": float(page.size.width),
-                "page_height": float(page.size.height),
-                "text": text.strip()
-            })
+            for prov, fragment in provenance_fragments(item, text):
+                page_no = prov.page_no
+                page = doc.pages[page_no]
+                raw_bbox = prov.bbox
+                if hasattr(raw_bbox, "to_top_left_origin"):
+                    bbox = raw_bbox.to_top_left_origin(page_height=page.size.height)
+                    bbox_dict = {
+                        "l": float(bbox.l),
+                        "t": float(bbox.t),
+                        "r": float(bbox.r),
+                        "b": float(bbox.b),
+                    }
+                else:
+                    bbox_dict = {
+                        "l": float(raw_bbox.l),
+                        "t": float(raw_bbox.t),
+                        "r": float(raw_bbox.r),
+                        "b": float(raw_bbox.b),
+                    }
+                raw_passages.append(
+                    {
+                        "section": section,
+                        "kind": normalize_label(label),
+                        "page": page_no,
+                        "bbox": bbox_dict,
+                        "page_width": float(page.size.width),
+                        "page_height": float(page.size.height),
+                        "text": fragment,
+                    }
+                )
 
     except Exception as exc:
         raise RuntimeError(f"Docling could not parse {paper_id}: {exc}") from exc
 
     if not raw_passages:
-        raise RuntimeError(f"Docling returned no passages with provenance for {paper_id}")
+        raise RuntimeError(
+            f"Docling returned no passages with provenance for {paper_id}"
+        )
 
     # Apply strict splitting and merging
     passages = split_large_passages_and_merge(raw_passages, pdf_full_path, paper_id)
 
     # Save to disk cache
     try:
-        cache_path.write_text(json.dumps({
-            "parser": "docling-v1",
-            "passages": [p.model_dump() for p in passages],
-        }, indent=2), encoding="utf-8")
+        cache_path.write_text(
+            json.dumps(
+                {
+                    "parser": PARSER_VERSION,
+                    "passages": [p.model_dump() for p in passages],
+                },
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
     except OSError as exc:
         logger.warning("Could not cache parsed passages for %s: %s", paper_id, exc)
 

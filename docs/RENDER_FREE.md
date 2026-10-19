@@ -1,5 +1,7 @@
 # Render Free: stable API within 512 MB
 
+The public root now serves [three bundled showcase examples](SHOWCASE.md), independently of this backend. Private records and actions live at `/workspace`. The public experience does not display the workspace password or require a healthy API. The technical capability notice remains in the private workspace; public pages use a concise showcase explanation.
+
 The entire processing pipeline cannot reliably run inside Render Free's 512 MB limit. The previous image started Docling/Torch and Node/Webpack together, waited for their health, and only then started the public Spring API. The failure was a memory problem before public-port startup, not a requirement to expose port 8002.
 
 The same image now supports two modes. **API mode** runs only Spring with bounded JVM memory. **Full mode** retains PDF parsing, Gemini extraction, quote/number/semantic verification, both medical review gates, writing, Playwright images, edge-tts, Remotion reels and export. Nothing substitutes unverified text for scientific evidence. Run full mode on your own computer or another machine you control with sufficient memory; this change does not provision a paid worker or add a new service dependency.

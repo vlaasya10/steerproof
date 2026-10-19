@@ -1,0 +1,342 @@
+[
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/carousel-1.png",
+    "bytes": 48693,
+    "sha256": "9ea0ba0e7930cd16c86dff703abaa5a64db82789d4e72142faea1734fdb16072"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/carousel-2.png",
+    "bytes": 61354,
+    "sha256": "ee5015c9aef481182934ab56ba9c6ea3f4128d1b513ec97c556d6e8f81abf75c"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/carousel-3.png",
+    "bytes": 66534,
+    "sha256": "e9a8e23277a7ea2d3efeee8bb30bef0d6969d1ed04ab8ea11bc70ac7e2102c46"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/carousel-4.png",
+    "bytes": 69250,
+    "sha256": "1e2e231dc33c91bdcff6169a359194cc93cf65f9628d0c841e0e690eed62840d"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/carousel-5.png",
+    "bytes": 69653,
+    "sha256": "e5fc55b92bb91a5ba731fbc67f07e5012ae5aef401180f37ee491168115c3b39"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/carousel-6.png",
+    "bytes": 38777,
+    "sha256": "a08969049fcd3bfb2124f7c603c8a84287b6e1be123aecade0cfcd96193c1de0"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/educational-sample.zip",
+    "bytes": 2983789,
+    "sha256": "4d9f2c8b63bb10f06821f01e4ce01c1a3d070a6f3d51c0b1ce724282c7d05d75"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-1.webp",
+    "bytes": 249106,
+    "sha256": "65612aef2adb7b86e1db2004ee45cde742aceb3926c19127f0d24804fd263fc5"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-10.webp",
+    "bytes": 281854,
+    "sha256": "d3c24cafa338f11aee1cdc3d3870c2ac705fcef49f6e349de69e9c9eb83ae7e7"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-11.webp",
+    "bytes": 304428,
+    "sha256": "aea676996e0323affafc8f9174c6ffcc840acf1d71adf28cb9f46f03bae71fdd"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-2.webp",
+    "bytes": 337962,
+    "sha256": "2b70693f7eb3faa727bfad3c296bceccfae564419c4e20e301192af6e9212fb4"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-3.webp",
+    "bytes": 347116,
+    "sha256": "40592952a724f7349ed8c93bf8bd64e50776e18f665906ec8866646a3cb53fe4"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-4.webp",
+    "bytes": 350904,
+    "sha256": "c927eaa5ebedfb0bad7f0a30f4a0d10cc614241dab9c9cef5695c0b6d00dab60"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/page-7.webp",
+    "bytes": 344998,
+    "sha256": "2f93a8756e0380d98bdd8824dc32e0b2500d8fa3a6c8001af030158bf901feb1"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/reel.mp4",
+    "bytes": 2107138,
+    "sha256": "45ccde73c0d8d4a8a1104d3982da15d444aca14bf0741b6998d85b4efdb67c28"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/reel.vtt",
+    "bytes": 947,
+    "sha256": "73f03996c2a819bc73ffa28f5860bbb4033f950a8e36d325c4b2b4102244bd2e"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/source.pdf",
+    "bytes": 566433,
+    "sha256": "c932bf190096bd4df90e48bded2152dd9559d05c2782a72b9a32e39e13c79d3a"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/static-1.png",
+    "bytes": 70220,
+    "sha256": "1d9ec2c7afce09de8d52badb25c25065c1767232ef19a31da8a91e57b9418f9b"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/static-2.png",
+    "bytes": 61949,
+    "sha256": "1d2757fe510e8fa96609b905f87abd2b158fe4a55c14c007a8a969bd224334ed"
+  },
+  {
+    "path": "frontend/public/showcase/media/glp1-and-appetite/b0ee83f709fc/static-3.png",
+    "bytes": 77700,
+    "sha256": "071b8cab9b350b7ae5e6feb13f130587218b33de55e3a063d04496ba93ed67e0"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/carousel-1.png",
+    "bytes": 56968,
+    "sha256": "a22d843aee7693d05a69b3b6af17799cdcdb1d42edb41836f78741f31086b472"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/carousel-2.png",
+    "bytes": 76681,
+    "sha256": "953f0194c020e9ca5dc350750702b94a61c90c0403132209bed361ca38079efd"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/carousel-3.png",
+    "bytes": 94827,
+    "sha256": "90e6e8f75748feaab5129ccad9eb4fda6a02640781d1f679f4b3852385c29c63"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/carousel-4.png",
+    "bytes": 78180,
+    "sha256": "585346e041a4659638a64cc3192542e30c7add9147a59b42b40e0c00ee181d9e"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/carousel-5.png",
+    "bytes": 49739,
+    "sha256": "ba0ceba0bc6da9632dfcb5dd9234e540d162725b11e58120007e1b56451673e7"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/educational-sample.zip",
+    "bytes": 2422931,
+    "sha256": "6f57205fd23b948e39d0977963cf2dd02c1bf550a2f4f88dc85bffb80e613a6d"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/page-2.webp",
+    "bytes": 360848,
+    "sha256": "5a007782fe925f0dd19f596d025629b3c2a724a8f3bcd9b9845ab4bbfaa65258"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/page-3.webp",
+    "bytes": 258036,
+    "sha256": "2e3168498c27c422922128b981ba14b6545d368fff08918312e1af7fc72ca9c4"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/page-5.webp",
+    "bytes": 259536,
+    "sha256": "a03805062d283f6e0d2a99fe3369bd6b78a29c9144ff8249aa879f82f9b091ec"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/reel.mp4",
+    "bytes": 1472696,
+    "sha256": "7663086342b750b325c245ffd949532a768c75cb7c7102ab66bd14220041eb4f"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/reel.vtt",
+    "bytes": 729,
+    "sha256": "24f241d0451464cf432cbe5fc28783df234b7de9814577fe2c16645419a2fb21"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/source.pdf",
+    "bytes": 781743,
+    "sha256": "589df3680596e00c4fe549e8f07f562e3f326b738c1148feb8199e7d15d695ee"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/static-1.png",
+    "bytes": 72390,
+    "sha256": "b1ef4584a87751ce5b6bf1859eb4b08fb77a8b9dafbc112149ee54ae18b0a260"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/static-2.png",
+    "bytes": 61646,
+    "sha256": "2eaf14514d161aa7a49462593bd207200432ceb388f17af8854e9cde689f0290"
+  },
+  {
+    "path": "frontend/public/showcase/media/metabolic-health/950ebc506330/static-3.png",
+    "bytes": 77949,
+    "sha256": "b1461e07747bad65cb96b8aad15a2f2f269eda362d07040c963d793bf0b285da"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/carousel-1.png",
+    "bytes": 53212,
+    "sha256": "d1f6b7f92c95d9d941c48204d173d9735cd589fb0cee4ea8e748aa49534f5b64"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/carousel-2.png",
+    "bytes": 74620,
+    "sha256": "2bb1277cb0eb79b2fb29b647aeed06ef77a44dc27e6b354845a5bf875161fdfe"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/carousel-3.png",
+    "bytes": 59613,
+    "sha256": "b4a814cdb8b1c8a392bd684bbd3ae3e4bdfa6d2fd4b24e73229a4ed2e64cc92b"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/carousel-4.png",
+    "bytes": 65521,
+    "sha256": "a5b08dce2f454f0f5955c51a3c21cc9c58570e566abf5161a304509b64e3de99"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/carousel-5.png",
+    "bytes": 49861,
+    "sha256": "827bf7ca643ebaf35cc6b006a7df0611c6a17b5849d6ab6933cfd30e2d777ece"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/educational-sample.zip",
+    "bytes": 2872989,
+    "sha256": "e44e4ab3e17461ef70fad45e917298ac2742cc4ee67c4df3edcca125921e0e24"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-1.webp",
+    "bytes": 280782,
+    "sha256": "80326c5dadf3d4622f609af4e33a959e0dfd7a0f828c0d877c633669fe1fb5d9"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-11.webp",
+    "bytes": 324816,
+    "sha256": "c968b00c267c82f7ef59db9cfc912a8a1b28b9afa65f7c4486dbe7f65af2e8e2"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-12.webp",
+    "bytes": 307198,
+    "sha256": "7512be76fdd6134c4c71630479d5832e169b3aed88968bf8348ca8651f98a06e"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-2.webp",
+    "bytes": 308778,
+    "sha256": "861d56c92fe7a3f1f4639c29f21cc93053df4f8704b8accbd4646451fc06b628"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-3.webp",
+    "bytes": 322294,
+    "sha256": "b99f355b718f728192cb793b13d106ac88ba6c61a7c623919d37aff705518dae"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-5.webp",
+    "bytes": 318366,
+    "sha256": "7df3cc3091ce901ef3527a9e23d2ee91062df50c746de2c93a5f1e3f647938ad"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-8.webp",
+    "bytes": 332316,
+    "sha256": "6648d244b4c193ff6dc9a8f98d2f677ac1162076c11d1ca8f031fee6cbd46067"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/page-9.webp",
+    "bytes": 308548,
+    "sha256": "9ee480364fe7b1a66260749e6eb8e585d9cfe9bd165c4934f249dfb6ef3f9add"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/reel.mp4",
+    "bytes": 2167096,
+    "sha256": "a87574af5f8e8f1071d6f15591d5110ccbc24c9e52b233320e1a638eca25fc2b"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/reel.vtt",
+    "bytes": 850,
+    "sha256": "1917287a3c23a2232df1b2474e4c1fd485f66c26bdbb4a7ea871a7e4e0d63298"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/source.pdf",
+    "bytes": 350524,
+    "sha256": "fc07744fc00632ebbae1954f932859c49d057912e42c4323b3248abd6ff9d459"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/static-1.png",
+    "bytes": 62464,
+    "sha256": "fb547a25300d58a44a725caebadab939d9dbfc002c419796270e122240bc3830"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/static-2.png",
+    "bytes": 53701,
+    "sha256": "8754a528599c69be0096c3ed1be53907f4697311f89a923430ab157197dd995f"
+  },
+  {
+    "path": "frontend/public/showcase/media/muscle-preservation/65e10fcc0789/static-3.png",
+    "bytes": 66726,
+    "sha256": "8f75ce941b74b4fbf5c0ed211bd1a91a20496be1235ecedb354cbbff8560ec4c"
+  },
+  {
+    "path": "frontend/public/fonts/Caveat-Medium.woff2",
+    "bytes": 50904,
+    "sha256": "edbfb1a768829d4e85127cd327e59faaec9701cb043e96430938f1f66acf009f"
+  },
+  {
+    "path": "frontend/public/fonts/InstrumentSerif-Italic.woff2",
+    "bytes": 22128,
+    "sha256": "5a51946dfffa82972bc98745359c46761515641fda557c25116459a9f83da4a7"
+  },
+  {
+    "path": "frontend/public/fonts/InstrumentSerif-Regular.woff2",
+    "bytes": 21032,
+    "sha256": "5eb09b5ac0e28b67c2f041c8ba6d244604ca0c0980d65912ab2d47fed84ddc31"
+  },
+  {
+    "path": "frontend/public/fonts/Inter-Medium.woff2",
+    "bytes": 24272,
+    "sha256": "f3779f1efccc4bdcdf9c0a02ab95bf6bd092ed09c48c08cedc725889edd1d19f"
+  },
+  {
+    "path": "frontend/public/fonts/Inter-Regular.woff2",
+    "bytes": 23664,
+    "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+  },
+  {
+    "path": "frontend/public/fonts/Inter-SemiBold.woff2",
+    "bytes": 24452,
+    "sha256": "f9a06e79cd3a2a20951c0f0e28f66dd0e6d3fda73911d640a2125c8fcb78f21a"
+  },
+  {
+    "path": "frontend/public/fonts/OFL-Caveat.txt",
+    "bytes": 4478,
+    "sha256": "6be75733f5ff1e7eb72f147f489db88752c890c9c70292be8e2460d7ef77f5bb"
+  },
+  {
+    "path": "frontend/public/fonts/OFL-InstrumentSerif.txt",
+    "bytes": 4498,
+    "sha256": "918aca23eab7bf6b4bec8b3155432bdfc17985d2fbb2516c2629785bd1feff42"
+  },
+  {
+    "path": "frontend/public/fonts/OFL-Inter.txt",
+    "bytes": 4470,
+    "sha256": "f14f2b95a38f4f20cad4d27f7710593f37534c046641be0348da7c28365f4e39"
+  },
+  {
+    "path": "docs/screenshots/showcase-evidence-desktop.png",
+    "bytes": 499069,
+    "sha256": "acb7fd4932b72eb8f25d945a6262d1751fcb64c1b14d3ddede659b9ab852e94d"
+  },
+  {
+    "path": "docs/screenshots/showcase-evidence-mobile.png",
+    "bytes": 303536,
+    "sha256": "a0c0c3ab0c76d92be9db37fb2f90afcb3fef2b08e16d38bcbeffe0f3f6a1ce14"
+  },
+  {
+    "path": "docs/screenshots/showcase-home-desktop.png",
+    "bytes": 361768,
+    "sha256": "e6a2db4354c5a9b895a559c1827d6f52e5f8dc8cc9db50a0444d9e9b384ae759"
+  },
+  {
+    "path": "docs/screenshots/showcase-home-mobile.png",
+    "bytes": 349964,
+    "sha256": "fd91a23516f2e40943d6214b0ce08b375fdd340887417ff6046a1f8119110244"
+  }
+]

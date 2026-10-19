@@ -25,7 +25,8 @@ export const Navbar: React.FC = () => {
             SteerProof Studio
           </span>
           <nav className="hidden md:flex items-center gap-4 text-sm text-clay font-sans">
-            <Link href="/" className="hover:text-ink transition-colors">Papers</Link>
+            <Link href="/workspace" className="hover:text-ink transition-colors">Papers</Link>
+            <Link href="/" className="hover:text-ink transition-colors">Public showcase</Link>
           </nav>
         </div>
 

@@ -186,3 +186,21 @@ GET  /health
 | POST | `/api/demo/seed-bad-claim/{paperId}` | Inserts `C-xxxx-BAD` ("Weight always comes back fully when you stop treatment.") on a passage of the paper and runs it through the real verifier. Returns the claim with entailment, risk and reasons. Audited as `BAD_CLAIM_SEEDED` |
 | DELETE | `/api/demo/seed-bad-claim/{paperId}` | Removes the paper's seeded claims so a real review starts clean. 409 `CLAIM_IN_USE` while a generated asset still links one. Audited as `BAD_CLAIM_REMOVED` |
 
+# Public showcase API (Next.js frontend)
+
+These routes are served by the frontend and are separate from the authenticated Spring API.
+
+| Route | Access | Response |
+| --- | --- | --- |
+| `GET /api/showcase` | Anonymous | Three curated case summaries |
+| `GET /api/showcase/{slug}` | Anonymous | Explicitly sanitized evidence/content snapshot for a known case |
+| `/showcase/media/{slug}/{version}/…` | Anonymous static files | Rights-reviewed PDF, page previews, rendered samples, VTT and educational ZIP |
+
+Only GET/HEAD/automatic OPTIONS are supported; POST/PATCH/PUT/DELETE return 405.
+Unknown case/evidence identifiers return 404. These routes never read private records,
+accept mutations, run models, connect to PostgreSQL or forward credentials. Media URLs
+are fixed paths in the publication allowlist, not a filesystem proxy. No expensive
+anonymous generation endpoint is introduced; static CDN delivery provides bounded work.
+Private Spring `/api/papers`, `/api/claims`, `/api/assets`, `/api/capabilities` and `/files`
+remain protected by the existing deployment authentication.
+
